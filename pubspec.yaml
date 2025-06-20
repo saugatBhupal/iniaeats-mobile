@@ -1,0 +1,58 @@
+name: inaeats
+description: "A new Flutter project."
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  flutter_svg: ^2.1.0
+  carousel_slider: ^5.0.0
+  equatable: ^2.0.7
+  intl: ^0.20.2
+  get_it: ^8.0.3
+  dio: ^5.8.0+1
+  connectivity_plus: ^6.1.4
+  pretty_dio_logger: ^1.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/gifs/
+
+  fonts:
+    - family: AlbertSans
+      fonts:
+        - asset: assets/fonts/AlbertSans-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/AlbertSans-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/AlbertSans-Light.ttf
+          weight: 300
+        - asset: assets/fonts/AlbertSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/AlbertSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/AlbertSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/AlbertSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/AlbertSans-ExtraBold.ttf
+          weight: 800
+  

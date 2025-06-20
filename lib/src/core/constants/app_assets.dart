@@ -1,0 +1,50 @@
+class AppImages {
+  AppImages._();
+  static const String _imagesPath = "assets/images";
+  static const String logo = "$_imagesPath/logo.svg";
+  static const String spotlights = "$_imagesPath/spotlights.png";
+  static const String onboarding = "$_imagesPath/onboarding-2.png";
+  static const String nepalFlag = "$_imagesPath/nepal-flag.png";
+  static const String mealTab = "$_imagesPath/meal-tab.png";
+  static const String drinks = "$_imagesPath/drinks.png";
+  static const String fruits = "$_imagesPath/fruits.png";
+  static const String gourmet = "$_imagesPath/gourmet.png";
+  static const String quickbites = "$_imagesPath/quickbites.png";
+  static const String readyEat = "$_imagesPath/ready-to-eat.png";
+  static const String vegan = "$_imagesPath/vegan.png";
+  static const String authentication = "$_imagesPath/authentication.png";
+  static const String spotlightCard = "$_imagesPath/spotlights-card.png";
+  static const String notification = "$_imagesPath/notification.png";
+  static const String recommended = "$_imagesPath/recommended.png";
+  static const String cartCoupon = "$_imagesPath/cart-coupon.png";
+  static const String cartMessage = "$_imagesPath/cart-message.png";
+  static const String mealDetails = "$_imagesPath/meal-details.png";
+  static const List<String> promos = [
+    "$_imagesPath/promos.png",
+    "$_imagesPath/promos.png",
+    "$_imagesPath/promos.png",
+    "$_imagesPath/promos.png",
+  ];
+}
+
+class AppIcons {
+  AppIcons._();
+  static const String _iconsPath = "assets/icons";
+  static const String dropdown = "$_iconsPath/dropdown.svg";
+  static const String notification = "$_iconsPath/notification.svg";
+  static const String cart = "$_iconsPath/cart.svg";
+  static const String search = "$_iconsPath/search.svg";
+  static const String rating = "$_iconsPath/rating.svg";
+  static const String timer = "$_iconsPath/timer.svg";
+  static const String send = "$_iconsPath/send.svg";
+  static const String filter = "$_iconsPath/filter.svg";
+  static const String coupon = "$_iconsPath/coupon.png";
+  static const String info = "$_iconsPath/info.svg";
+  static const String calender = "$_iconsPath/calender.svg";
+}
+
+class AppGifs {
+  AppGifs._();
+  static const String _gifsPath = "assets/gifs";
+  static const String onboarding = "$_gifsPath/onboarding.gif";
+}
