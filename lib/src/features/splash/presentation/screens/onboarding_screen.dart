@@ -3,6 +3,7 @@ import 'package:inaeats/src/config/app_routes/app_routes.dart';
 import 'package:inaeats/src/core/constants/app_assets.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
+import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/core/widgets/buttons/dark_rounded_button.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -18,7 +19,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
     return Scaffold(
       backgroundColor: AppColors.black,
       body: Stack(
@@ -49,10 +49,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   // Apply fade-out and slide-up animation
                   AnimatedSwitcher(
                     duration: const Duration(milliseconds: 300),
-                    transitionBuilder: (
-                      Widget child,
-                      Animation<double> animation,
-                    ) {
+                    transitionBuilder: (Widget child, Animation<double> animation) {
                       return FadeTransition(
                         opacity: animation,
                         child: SlideTransition(
@@ -67,17 +64,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     child: Text(
                       AppStrings.onboardingTitles[_currentPage],
                       key: ValueKey<int>(_currentPage),
-                      style: _textTheme.displaySmall,
+                      style: context.displaySmall,
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 12),
                     child: AnimatedSwitcher(
                       duration: const Duration(milliseconds: 800),
-                      transitionBuilder: (
-                        Widget child,
-                        Animation<double> animation,
-                      ) {
+                      transitionBuilder: (Widget child, Animation<double> animation) {
                         return FadeTransition(
                           opacity: animation,
                           child: SlideTransition(
@@ -92,7 +86,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       child: Text(
                         AppStrings.onboardingSubtitles[_currentPage],
                         key: ValueKey<int>(_currentPage),
-                        style: _textTheme.titleSmall,
+                        style: context.titleSmall,
                       ),
                     ),
                   ),
@@ -127,10 +121,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 width: MediaQuery.of(context).size.width * 0.9,
                 child: DarkRoundedButton(
                   title: AppStrings.getStarted,
-                  onPressed:
-                      () => Navigator.of(
-                        context,
-                      ).pushNamed(AppRoutes.authentication),
+                  onPressed: () => Navigator.of(context).pushNamed(AppRoutes.authentication),
                 ),
               ),
             ),
@@ -141,8 +132,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   Widget buildPage(String imagePath) {
-    return SizedBox.expand(
-      child: Image.asset(imagePath, alignment: Alignment.topCenter),
-    );
+    return SizedBox.expand(child: Image.asset(imagePath, alignment: Alignment.topCenter));
   }
 }

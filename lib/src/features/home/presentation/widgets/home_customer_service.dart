@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
+import 'package:inaeats/src/core/constants/media_query_values.dart';
 
 class HomeCustomerService extends StatelessWidget {
   const HomeCustomerService({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
     final _gap = SizedBox(height: 12);
     final List<String> customerService = [
       "We’re Always Improving – Tell Us What You Think!",
@@ -23,16 +23,13 @@ class HomeCustomerService extends StatelessWidget {
         children: [
           Text(
             customerService[0],
-            style: _textTheme.bodyLarge!.copyWith(
-              color: AppColors.white,
-              letterSpacing: 0,
-            ),
+            style: context.bodyLarge.copyWith(color: AppColors.white, letterSpacing: 0),
           ),
           _gap,
           Text(
             customerService[1],
             textAlign: TextAlign.justify,
-            style: _textTheme.bodySmall!.copyWith(
+            style: context.bodySmall.copyWith(
               color: AppColors.white,
               fontWeight: FontThickness.regular,
               letterSpacing: 0,
@@ -41,7 +38,7 @@ class HomeCustomerService extends StatelessWidget {
           _gap,
           Text(
             customerService[2],
-            style: _textTheme.bodySmall!.copyWith(
+            style: context.bodySmall.copyWith(
               color: AppColors.white,
               fontWeight: FontThickness.semiBold,
               letterSpacing: 0,
@@ -56,10 +53,7 @@ class HomeCustomerService extends StatelessWidget {
             ),
             child: Text(
               customerService[3],
-              style: _textTheme.bodySmall!.copyWith(
-                fontWeight: FontThickness.bold,
-                letterSpacing: 0,
-              ),
+              style: context.bodySmall.copyWith(fontWeight: FontThickness.bold, letterSpacing: 0),
             ),
           ),
         ],

@@ -40,8 +40,6 @@ class _MealTabsState extends State<MealTabs> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
-
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: Column(
@@ -55,8 +53,7 @@ class _MealTabsState extends State<MealTabs> with TickerProviderStateMixin {
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 300),
             transitionBuilder:
-                (child, animation) =>
-                    FadeTransition(opacity: animation, child: child),
+                (child, animation) => FadeTransition(opacity: animation, child: child),
             child: MealTabView(
               key: ValueKey(_tabController.index),
               mealTimel: mealOptions[_tabController.index],

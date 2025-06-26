@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
+import 'package:inaeats/src/core/constants/media_query_values.dart';
 
 class AppTabbar extends StatelessWidget {
   final TabController tabController;
@@ -8,7 +9,6 @@ class AppTabbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
     return TabBar(
       controller: tabController,
       isScrollable: true,
@@ -34,8 +34,8 @@ class AppTabbar extends StatelessWidget {
         ],
       ),
       dividerHeight: 0,
-      labelStyle: _textTheme.bodyLarge!.copyWith(color: AppColors.white),
-      unselectedLabelStyle: _textTheme.bodyLarge!.copyWith(
+      labelStyle: context.bodyLarge.copyWith(color: AppColors.white),
+      unselectedLabelStyle: context.bodyLarge.copyWith(
         color: AppColors.black.withValues(alpha: 0.45),
       ),
       splashFactory: NoSplash.splashFactory,

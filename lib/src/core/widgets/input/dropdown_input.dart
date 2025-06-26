@@ -73,9 +73,7 @@ class DropdownInput extends StatelessWidget {
                     width: context.width,
                     padding: EdgeInsets.symmetric(vertical: 12, horizontal: 14),
                     decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(color: AppColors.border),
-                      ),
+                      border: Border(bottom: BorderSide(color: AppColors.border)),
                     ),
                     child: Text(
                       "Select $title",
@@ -136,9 +134,7 @@ class DropdownInput extends StatelessWidget {
         child: TextFormField(
           readOnly: true,
           controller: TextEditingController(text: label),
-          style: context.titleSmall.copyWith(
-            color: AppColors.black.withValues(alpha: 0.6),
-          ),
+          style: context.titleSmall.copyWith(color: AppColors.black.withValues(alpha: 0.6)),
           decoration: InputDecoration(
             suffixIcon: Padding(
               padding: const EdgeInsets.only(right: 12),
@@ -149,15 +145,10 @@ class DropdownInput extends StatelessWidget {
                 fit: BoxFit.scaleDown,
               ),
             ),
-            suffixIconConstraints: const BoxConstraints(
-              minHeight: 24,
-              minWidth: 24,
-            ),
+            suffixIconConstraints: const BoxConstraints(minHeight: 24, minWidth: 24),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(
-                color: AppColors.grey.withValues(alpha: 0.4),
-              ),
+              borderSide: BorderSide(color: AppColors.grey.withValues(alpha: 0.4)),
             ),
             filled: true,
             fillColor: AppColors.grey.withValues(alpha: 0.05),

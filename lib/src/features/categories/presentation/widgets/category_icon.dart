@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
+import 'package:inaeats/src/core/constants/media_query_values.dart';
 
 class CategoryIcon extends StatelessWidget {
   final String label;
@@ -9,14 +10,13 @@ class CategoryIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
     return Column(
       children: [
         Image.asset(image, height: 70, width: 70),
         Text(
           label,
           textAlign: TextAlign.center,
-          style: _textTheme.bodyLarge!.copyWith(
+          style: context.bodyLarge.copyWith(
             color: AppColors.black.withValues(alpha: 0.6),
             fontWeight: FontThickness.semiBold,
           ),

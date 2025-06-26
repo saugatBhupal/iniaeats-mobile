@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
+import 'package:inaeats/src/core/constants/media_query_values.dart';
 
 class AuthTextspan extends StatelessWidget {
   const AuthTextspan({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.only(bottom: 12.0),
       child: RichText(
         textAlign: TextAlign.center,
         text: TextSpan(
-          style: _textTheme.bodySmall!.copyWith(
+          style: context.bodySmall.copyWith(
             color: AppColors.black.withValues(alpha: 0.6),
             letterSpacing: 0.2,
           ),

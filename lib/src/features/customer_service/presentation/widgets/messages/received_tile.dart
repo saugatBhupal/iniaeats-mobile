@@ -19,8 +19,6 @@ class ReceivedTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
-
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: Row(
@@ -36,13 +34,10 @@ class ReceivedTile extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(18.0)),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 12.8,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12.8),
                   child: Text(
                     message,
-                    style: _textTheme.bodySmall!.copyWith(
+                    style: context.bodySmall!.copyWith(
                       color: AppColors.black.withValues(alpha: 0.45),
                       fontWeight: FontThickness.semiBold,
                       fontSize: 12,
@@ -55,7 +50,7 @@ class ReceivedTile extends StatelessWidget {
               SizedBox(height: 4),
               Text(
                 sent,
-                style: _textTheme.labelLarge!.copyWith(
+                style: context.labelLarge!.copyWith(
                   color: AppColors.black.withValues(alpha: 0.45),
                   fontWeight: FontThickness.semiBold,
                 ),

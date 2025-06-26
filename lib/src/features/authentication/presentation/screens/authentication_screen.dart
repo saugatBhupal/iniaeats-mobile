@@ -3,6 +3,7 @@ import 'package:inaeats/src/core/constants/app_assets.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_enums.dart';
 import 'package:inaeats/src/core/widgets/backgroud/gradient_background.dart';
+import 'package:inaeats/src/features/authentication/presentation/widgets/auth_state.dart';
 import 'package:inaeats/src/features/authentication/presentation/widgets/auth_textspan.dart';
 import 'package:inaeats/src/features/authentication/presentation/widgets/auth_title.dart';
 import 'package:inaeats/src/features/authentication/presentation/widgets/forms/login_form.dart';
@@ -10,10 +11,10 @@ import 'package:inaeats/src/features/authentication/presentation/widgets/forms/o
 import 'package:inaeats/src/features/authentication/presentation/widgets/forms/register_form.dart';
 
 class AuthenticationScreen extends StatelessWidget {
-  final ValueNotifier<AuthType> authTypeNotifier;
+  final ValueNotifier<AuthState> authStateNotifier;
 
   AuthenticationScreen({super.key, required AuthType authType})
-    : authTypeNotifier = ValueNotifier<AuthType>(authType);
+    : authStateNotifier = ValueNotifier<AuthState>(AuthState(authType: authType));
 
   @override
   Widget build(BuildContext context) {
@@ -29,25 +30,18 @@ class AuthenticationScreen extends StatelessWidget {
                 top: 0,
                 left: 0,
                 right: 0,
-                child: Image.asset(
-                  AppImages.authentication,
-                  fit: BoxFit.contain,
-                ),
+                child: Image.asset(AppImages.authentication, fit: BoxFit.contain),
               ),
-
-              ValueListenableBuilder<AuthType>(
-                valueListenable: authTypeNotifier,
-                builder: (context, authType, _) {
+              ValueListenableBuilder<AuthState>(
+                valueListenable: authStateNotifier,
+                builder: (context, state, _) {
                   return AnimatedSize(
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeInOut,
                     alignment: Alignment.topCenter,
                     child: Container(
                       width: double.infinity,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 42,
-                        vertical: 12,
-                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 42, vertical: 12),
                       decoration: BoxDecoration(
                         color: AppColors.white,
                         borderRadius: const BorderRadius.only(
@@ -56,7 +50,7 @@ class AuthenticationScreen extends StatelessWidget {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors.black.withValues(alpha: 0.10),
+                            color: AppColors.black.withValues(alpha: 0.1),
                             offset: const Offset(1, 1),
                             blurRadius: 20,
                           ),
@@ -64,20 +58,12 @@ class AuthenticationScreen extends StatelessWidget {
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const AuthTitle(),
                           AnimatedSwitcher(
                             duration: const Duration(milliseconds: 300),
-                            switchInCurve: Curves.easeInOut,
-                            switchOutCurve: Curves.easeInOut,
-                            transitionBuilder:
-                                (child, animation) => FadeTransition(
-                                  opacity: animation,
-                                  child: child,
-                                ),
-                            child: _buildForm(authType),
+                            child: _buildForm(state),
                           ),
                           const AuthTextspan(),
                         ],
@@ -93,19 +79,29 @@ class AuthenticationScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildForm(AuthType authType) {
-    switch (authType) {
+  Widget _buildForm(AuthState state) {
+    switch (state.authType) {
       case AuthType.login:
         return LoginForm(
           key: const ValueKey('LoginForm'),
-          onOtpRequested: () => authTypeNotifier.value = AuthType.otp,
+          onOtpRequested: (phone, expiryTime) {
+            authStateNotifier.value = state.copyWith(
+              authType: AuthType.otp,
+              phone: phone,
+              expiryTime: expiryTime,
+            );
+          },
         );
       case AuthType.register:
-        return const RegisterForm(key: ValueKey('RegisterForm'));
+        return RegisterForm(key: ValueKey('RegisterForm'), phone: state.phone);
       case AuthType.otp:
         return OtpForm(
           key: const ValueKey('OtpForm'),
-          onChangeNumber: () => authTypeNotifier.value = AuthType.login,
+          phone: state.phone,
+          expiryTime: state.expiryTime,
+          onFormRequested: (AuthType type) {
+            authStateNotifier.value = state.copyWith(authType: type);
+          },
         );
     }
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/constants/app_assets.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
+import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/features/notifications/presentation/widgets/tag/new_tag.dart';
 
 class NotificationCard extends StatelessWidget {
@@ -8,7 +9,6 @@ class NotificationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       // color: AppColors.bento,
@@ -23,13 +23,10 @@ class NotificationCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Order Successful!",
-                      style: _textTheme.titleLarge!.copyWith(fontSize: 20),
-                    ),
+                    Text("Order Successful!", style: context.titleLarge.copyWith(fontSize: 20)),
                     Text(
                       "19 Dev 2022 | 20:50 PM",
-                      style: _textTheme.bodyLarge!.copyWith(
+                      style: context.bodyLarge.copyWith(
                         color: AppColors.black.withValues(alpha: 0.45),
                       ),
                     ),
@@ -44,7 +41,7 @@ class NotificationCard extends StatelessWidget {
             padding: const EdgeInsets.only(top: 12.0),
             child: Text(
               "Your order has been successfully cancelled. For any concerns or assistance, our support team is ready to help via the Help Center.",
-              style: _textTheme.bodyLarge!.copyWith(
+              style: context.bodyLarge.copyWith(
                 color: AppColors.black.withValues(alpha: 0.45),
                 height: 1.1,
                 letterSpacing: 0,

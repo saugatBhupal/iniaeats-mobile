@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
+import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/features/search/presentation/widgets/chip/search_chip.dart';
 
 class SearchHistory extends StatelessWidget {
@@ -19,8 +20,6 @@ class SearchHistory extends StatelessWidget {
       "Chocochip cake",
     ];
 
-    final _textTheme = Theme.of(context).textTheme;
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
@@ -28,7 +27,7 @@ class SearchHistory extends StatelessWidget {
         children: [
           Text(
             AppStrings.history,
-            style: _textTheme.titleLarge!.copyWith(
+            style: context.titleLarge.copyWith(
               color: AppColors.green,
               fontWeight: FontThickness.bold,
             ),

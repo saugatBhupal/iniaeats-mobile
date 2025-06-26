@@ -2,22 +2,23 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:inaeats/src/core/network/connectivity_checker.dart';
+import 'package:inaeats/src/core/network/http_service.dart';
+import 'package:inaeats/src/features/authentication/authentication_injector.dart';
 
 final sl = GetIt.instance;
 
 Future<void> initDependencies() async {
   _initCore();
+  initAuthentication();
 }
 
 void _initCore() {
-  sl.registerSingleton<Dio>(Dio());
-
   sl.registerLazySingleton<Connectivity>(() => Connectivity());
   sl.registerLazySingleton<BaseCheckInternetConnectivity>(
     () => CheckInternetConnectivity(connectivity: sl()),
   );
-
+  sl.registerLazySingleton<HttpService>(() => HttpService());
+  sl.registerLazySingleton<Dio>(() => sl<HttpService>().dio);
   // sl.registerLazySingleton<HiveService>(() => HiveService());
-  // sl.registerLazySingleton<HttpService>(() => HttpService(Dio()));
   // sl.registerLazySingleton<SocketService>(() => SocketService());
 }

@@ -3,45 +3,29 @@ import 'package:flutter_svg/svg.dart';
 import 'package:inaeats/src/core/constants/app_assets.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
+import 'package:inaeats/src/core/constants/media_query_values.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
-    return TextFormField(
-      readOnly: true,
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-        filled: true,
-        isDense: true,
-        fillColor: AppColors.white,
+    return SizedBox(
+      height: 40,
+      child: SearchBar(
         hintText: AppStrings.searchPH,
-        hintStyle: _textTheme.bodySmall!.copyWith(
-          color: AppColors.grey.withValues(alpha: 0.5),
+        backgroundColor: WidgetStatePropertyAll(AppColors.white),
+        elevation: WidgetStatePropertyAll(0),
+        shape: WidgetStatePropertyAll(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6),
+            side: const BorderSide(color: AppColors.border),
+          ),
         ),
-        prefixIcon: Padding(
-          padding: const EdgeInsets.only(left: 8),
-          child: SvgPicture.asset(AppIcons.search, width: 20, height: 20),
+        hintStyle: WidgetStatePropertyAll(
+          context.bodySmall.copyWith(color: AppColors.grey.withValues(alpha: 0.5)),
         ),
-        prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: 10,
-          horizontal: 12,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(6),
-          borderSide: const BorderSide(color: AppColors.border),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(6),
-          borderSide: const BorderSide(color: AppColors.border),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(6),
-          borderSide: const BorderSide(color: AppColors.border),
-        ),
+        leading: SvgPicture.asset(AppIcons.search, width: 20, height: 20),
       ),
     );
   }

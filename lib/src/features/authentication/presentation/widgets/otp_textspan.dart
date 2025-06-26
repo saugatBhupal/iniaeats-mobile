@@ -4,9 +4,30 @@ import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
 
-class OtpTextspan extends StatelessWidget {
+class OtpTextspan extends StatefulWidget {
   final VoidCallback onChangeNumber;
-  const OtpTextspan({super.key, required this.onChangeNumber});
+  final String phone;
+
+  const OtpTextspan({super.key, required this.onChangeNumber, required this.phone});
+
+  @override
+  State<OtpTextspan> createState() => _OtpTextspanState();
+}
+
+class _OtpTextspanState extends State<OtpTextspan> {
+  late TapGestureRecognizer _tapGestureRecognizer;
+
+  @override
+  void initState() {
+    super.initState();
+    _tapGestureRecognizer = TapGestureRecognizer()..onTap = widget.onChangeNumber;
+  }
+
+  @override
+  void dispose() {
+    _tapGestureRecognizer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,19 +36,14 @@ class OtpTextspan extends StatelessWidget {
       child: RichText(
         textAlign: TextAlign.start,
         text: TextSpan(
-          style: context.bodySmall.copyWith(
-            color: AppColors.black.withValues(alpha: 0.6),
-          ),
+          style: context.bodySmall.copyWith(color: AppColors.black.withAlpha(150)),
           children: [
             const TextSpan(text: AppStrings.otpSentMessage),
-            const TextSpan(text: "\n+977-9818733646. "),
+            TextSpan(text: "\n+${widget.phone}. "),
             TextSpan(
               text: AppStrings.changeNumber,
-              style: TextStyle(
-                decoration: TextDecoration.underline,
-                color: AppColors.green,
-              ),
-              recognizer: TapGestureRecognizer()..onTap = onChangeNumber,
+              style: const TextStyle(decoration: TextDecoration.underline, color: AppColors.green),
+              recognizer: _tapGestureRecognizer,
             ),
           ],
         ),

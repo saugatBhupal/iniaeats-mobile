@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/constants/app_assets.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
+import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/features/categories/presentation/widgets/category_icon.dart';
 
 class HomeCategories extends StatelessWidget {
@@ -9,7 +10,6 @@ class HomeCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
     final List<Map<String, String>> _categories = [
       {'label': AppStrings.drinks, 'image': AppImages.drinks},
       {'label': AppStrings.readyEat, 'image': AppImages.readyEat},
@@ -30,17 +30,15 @@ class HomeCategories extends StatelessWidget {
               children: [
                 Text(
                   AppStrings.categories,
-                  style: _textTheme.titleLarge!.copyWith(
-               color: AppColors.black.withValues(alpha: 0.6),
+                  style: context.titleLarge.copyWith(
+                    color: AppColors.black.withValues(alpha: 0.6),
                   ),
                 ),
                 GestureDetector(
                   onTap: () {},
                   child: Text(
                     AppStrings.see,
-                    style: _textTheme.bodyLarge!.copyWith(
-                      color: AppColors.frog,
-                    ),
+                    style: context.bodyLarge.copyWith(color: AppColors.frog),
                   ),
                 ),
               ],
@@ -56,10 +54,7 @@ class HomeCategories extends StatelessWidget {
                 final item = _categories[index];
                 return Padding(
                   padding: const EdgeInsets.only(left: 16.0),
-                  child: CategoryIcon(
-                    label: item['label']!,
-                    image: item['image']!,
-                  ),
+                  child: CategoryIcon(label: item['label']!, image: item['image']!),
                 );
               },
               separatorBuilder: (context, index) => const SizedBox(width: 8),

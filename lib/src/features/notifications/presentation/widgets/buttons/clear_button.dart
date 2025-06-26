@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
+import 'package:inaeats/src/core/constants/media_query_values.dart';
 
 class ClearButton extends StatelessWidget {
   const ClearButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 6.0),
       decoration: BoxDecoration(
@@ -21,7 +21,7 @@ class ClearButton extends StatelessWidget {
           Icon(Icons.close, color: AppColors.strawberry, size: 18),
           Text(
             AppStrings.clear,
-            style: _textTheme.bodySmall!.copyWith(
+            style: context.bodySmall.copyWith(
               color: AppColors.strawberry,
               fontWeight: FontThickness.semiBold,
             ),

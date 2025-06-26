@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
+import 'package:inaeats/src/core/constants/media_query_values.dart';
 
 class FiltersChip extends StatefulWidget {
   final List<String> filterList;
@@ -14,8 +15,6 @@ class _FiltersChipState extends State<FiltersChip> {
   List<String> selectedFilter = [];
 
   List<Widget> _buildFilterList() {
-    final _textTheme = Theme.of(context).textTheme;
-
     return widget.filterList.map((item) {
       bool isSelected = selectedFilter.contains(item);
 
@@ -24,9 +23,7 @@ class _FiltersChipState extends State<FiltersChip> {
         child: GestureDetector(
           onTap: () {
             setState(() {
-              isSelected
-                  ? selectedFilter.remove(item)
-                  : selectedFilter.add(item);
+              isSelected ? selectedFilter.remove(item) : selectedFilter.add(item);
             });
           },
           child: Container(
@@ -38,11 +35,8 @@ class _FiltersChipState extends State<FiltersChip> {
             ),
             child: Text(
               item,
-              style: _textTheme.bodySmall!.copyWith(
-                color:
-                    isSelected
-                        ? AppColors.white
-                        : AppColors.black.withValues(alpha: 0.45),
+              style: context.bodySmall.copyWith(
+                color: isSelected ? AppColors.white : AppColors.black.withValues(alpha: 0.45),
                 fontWeight: FontThickness.semiBold,
               ),
             ),

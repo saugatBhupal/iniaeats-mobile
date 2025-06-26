@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
+import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/core/widgets/buttons/back_button.dart';
 import 'package:inaeats/src/features/notifications/presentation/widgets/buttons/clear_button.dart';
 
-class NotificationAppbar extends StatelessWidget
-    implements PreferredSizeWidget {
+class NotificationAppbar extends StatelessWidget implements PreferredSizeWidget {
   const NotificationAppbar({super.key});
   @override
   Size get preferredSize => const Size.fromHeight(70);
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
     return SafeArea(
       child: Container(
         padding: EdgeInsets.only(bottom: 12, left: 16, right: 16),
@@ -24,7 +23,7 @@ class NotificationAppbar extends StatelessWidget
             AppbarBackButton(),
             Text(
               AppStrings.notifications,
-              style: _textTheme.titleLarge!.copyWith(
+              style: context.titleLarge.copyWith(
                 fontWeight: FontThickness.bold,
                 color: AppColors.green,
               ),

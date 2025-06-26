@@ -39,8 +39,6 @@ class _OffersTabState extends State<OffersTab> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
-
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: Column(
@@ -54,8 +52,7 @@ class _OffersTabState extends State<OffersTab> with TickerProviderStateMixin {
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 300),
             transitionBuilder:
-                (child, animation) =>
-                    FadeTransition(opacity: animation, child: child),
+                (child, animation) => FadeTransition(opacity: animation, child: child),
             child: OffersTabView(
               key: ValueKey(_tabController.index),
               offers: offers[_tabController.index],

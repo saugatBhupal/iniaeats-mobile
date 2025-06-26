@@ -19,8 +19,6 @@ class SentTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
-
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: Align(
@@ -37,18 +35,13 @@ class SentTile extends StatelessWidget {
                     constraints: BoxConstraints(maxWidth: context.width * 0.7),
                     decoration: BoxDecoration(
                       color: AppColors.green,
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(18.0),
-                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(18.0)),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 12.8,
-                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12.8),
                       child: Text(
                         message,
-                        style: _textTheme.bodySmall!.copyWith(
+                        style: context.bodySmall!.copyWith(
                           color: AppColors.white,
                           fontWeight: FontThickness.semiBold,
                           fontSize: 12,
@@ -61,7 +54,7 @@ class SentTile extends StatelessWidget {
                   SizedBox(height: 4),
                   Text(
                     sent,
-                    style: _textTheme.labelLarge!.copyWith(
+                    style: context.labelLarge!.copyWith(
                       color: AppColors.black.withValues(alpha: 0.45),
                       fontWeight: FontThickness.semiBold,
                     ),

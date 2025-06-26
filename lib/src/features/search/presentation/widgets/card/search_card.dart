@@ -14,7 +14,6 @@ class SearchCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
     final _gap = SizedBox(width: 8.0);
     return Container(
       constraints: BoxConstraints(maxWidth: context.width * 0.8),
@@ -39,7 +38,7 @@ class SearchCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("Olio Spaghetti Kit", style: _textTheme.titleMedium),
+                Text("Olio Spaghetti Kit", style: context.titleMedium),
                 SizedBox(width: 6),
                 const FoodMarkSymbol(foodMark: FoodMark.veg),
                 const Spacer(),
@@ -68,28 +67,28 @@ class SearchCard extends StatelessWidget {
               children: [
                 Text(
                   "Italian",
-                  style: _textTheme.bodySmall!.copyWith(
+                  style: context.bodySmall!.copyWith(
                     color: AppColors.black.withValues(alpha: 0.45),
                   ),
                 ),
                 _gap,
                 Text(
                   "Meal-Kit",
-                  style: _textTheme.bodySmall!.copyWith(
+                  style: context.bodySmall!.copyWith(
                     color: AppColors.black.withValues(alpha: 0.45),
                   ),
                 ),
                 _gap,
                 Text(
                   "Easy",
-                  style: _textTheme.bodySmall!.copyWith(
+                  style: context.bodySmall!.copyWith(
                     color: AppColors.black.withValues(alpha: 0.45),
                   ),
                 ),
                 _gap,
                 Text(
                   "Veg & Vegan",
-                  style: _textTheme.bodySmall!.copyWith(
+                  style: context.bodySmall!.copyWith(
                     color: AppColors.black.withValues(alpha: 0.45),
                   ),
                 ),

@@ -51,10 +51,7 @@ class _DateFieldState extends State<DateField> {
             children: [
               Container(
                 alignment: Alignment.centerRight,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 8,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 child: Container(
                   width: context.width,
                   padding: EdgeInsets.symmetric(vertical: 12, horizontal: 14),
@@ -92,9 +89,7 @@ class _DateFieldState extends State<DateField> {
                     onPressed: () {
                       setState(() {
                         selectedDate = tempDate;
-                        widget.controller.text = DateFormat(
-                          'd MMMM y',
-                        ).format(selectedDate!);
+                        widget.controller.text = DateFormat('d MMMM y').format(selectedDate!);
                       });
                       Navigator.pop(context);
                     },
@@ -110,16 +105,12 @@ class _DateFieldState extends State<DateField> {
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           widget.label,
-          style: _textTheme.bodySmall!.copyWith(
-            color: AppColors.black.withValues(alpha: 0.6),
-          ),
+          style: context.bodySmall!.copyWith(color: AppColors.black.withValues(alpha: 0.6)),
         ),
         const SizedBox(height: 4),
         GestureDetector(
@@ -131,28 +122,21 @@ class _DateFieldState extends State<DateField> {
               validator: widget.validator,
               keyboardType: TextInputType.datetime,
               cursorColor: AppColors.grey,
-              style: _textTheme.titleSmall!.copyWith(
-                color: AppColors.black.withValues(alpha: 0.6),
-              ),
+              style: context.titleSmall!.copyWith(color: AppColors.black.withValues(alpha: 0.6)),
               autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: InputDecoration(
                 hintText:
                     selectedDate != null
                         ? DateFormat('d MMMM y').format(selectedDate!)
                         : widget.hintText ?? 'Select date',
-                hintStyle: _textTheme.titleSmall!.copyWith(
+                hintStyle: context.titleSmall!.copyWith(
                   fontSize: 15,
                   color: AppColors.black.withValues(alpha: 0.6),
                 ),
-                contentPadding: const EdgeInsets.symmetric(
-                  vertical: 6,
-                  horizontal: 16,
-                ),
+                contentPadding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(
-                    color: AppColors.grey.withValues(alpha: 0.4),
-                  ),
+                  borderSide: BorderSide(color: AppColors.grey.withValues(alpha: 0.4)),
                 ),
                 filled: true,
                 fillColor: AppColors.grey.withValues(alpha: 0.05),
@@ -160,10 +144,7 @@ class _DateFieldState extends State<DateField> {
                   padding: const EdgeInsets.only(right: 12.0),
                   child: SvgPicture.asset(AppIcons.calender),
                 ),
-                suffixIconConstraints: const BoxConstraints(
-                  minHeight: 22,
-                  minWidth: 22,
-                ),
+                suffixIconConstraints: const BoxConstraints(minHeight: 22, minWidth: 22),
               ),
             ),
           ),

@@ -3,13 +3,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:inaeats/src/core/constants/app_assets.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
+import 'package:inaeats/src/core/constants/media_query_values.dart';
 
 class RatingsSymbol extends StatelessWidget {
   const RatingsSymbol({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
     return Container(
       decoration: BoxDecoration(
         color: AppColors.petal,
@@ -24,12 +24,7 @@ class RatingsSymbol extends StatelessWidget {
               padding: const EdgeInsets.only(right: 3.0),
               child: SvgPicture.asset(AppIcons.rating),
             ),
-            Text(
-              "3.5",
-              style: _textTheme.labelLarge!.copyWith(
-                color: AppColors.salmon,
-              ),
-            ),
+            Text("3.5", style: context.labelLarge.copyWith(color: AppColors.salmon)),
           ],
         ),
       ),

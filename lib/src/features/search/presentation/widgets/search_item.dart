@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
+import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/features/search/presentation/widgets/chip/search_chip.dart';
 
 class SearchItem extends StatelessWidget {
@@ -7,7 +8,6 @@ class SearchItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _textTheme = Theme.of(context).textTheme;
     return Container(
       padding: const EdgeInsets.only(left: 16, right: 16, top: 12, bottom: 18),
       decoration: BoxDecoration(
@@ -17,16 +17,10 @@ class SearchItem extends StatelessWidget {
         children: [
           Text(
             "Results For:",
-            style: _textTheme.bodyLarge!.copyWith(
-              color: AppColors.black.withValues(alpha: 0.45),
-            ),
+            style: context.bodyLarge.copyWith(color: AppColors.black.withValues(alpha: 0.45)),
           ),
           SizedBox(width: 10),
-          SearchChip(
-            label: "Spaghetti",
-            border: AppColors.frog,
-            background: AppColors.white,
-          ),
+          SearchChip(label: "Spaghetti", border: AppColors.frog, background: AppColors.white),
         ],
       ),
     );
