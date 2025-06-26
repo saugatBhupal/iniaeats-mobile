@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inaeats/src/core/widgets/backgroud/gradient_background.dart';
 import 'package:inaeats/src/features/search/presentation/widgets/appbar/search_appbar.dart';
 import 'package:inaeats/src/features/search/presentation/widgets/search_history.dart';
 import 'package:inaeats/src/features/search/presentation/widgets/search_recommended_list.dart';
@@ -11,14 +12,12 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: SearchAppbar(),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SearchHistory(),
-            SearchTrendingCategories(),
-            SearchRecommendedList(),
-          ],
+      body: GradientBackground(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [SearchHistory(), SearchTrendingCategories(), SearchRecommendedList()],
+          ),
         ),
       ),
     );

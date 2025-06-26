@@ -12,7 +12,6 @@ import 'package:inaeats/src/features/coupons/presentation/screens/coupons_screen
 import 'package:inaeats/src/features/customer_service/presentation/screens/customer_service_screen.dart';
 import 'package:inaeats/src/features/home/presentation/screens/home_screen.dart';
 import 'package:inaeats/src/features/meals/presentation/screens/meal_details_screen.dart';
-import 'package:inaeats/src/features/meals/presentation/screens/meal_details_screen_test.dart';
 import 'package:inaeats/src/features/notifications/presentation/screens/notification_screen.dart';
 import 'package:inaeats/src/features/offers/presentation/screens/offers_screen.dart';
 import 'package:inaeats/src/features/recipe/presentation/screens/recipe_screen.dart';
@@ -58,8 +57,6 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const CouponsScreen());
       case AppRoutes.recipe:
         return MaterialPageRoute(builder: (context) => const RecipeScreen());
-      case AppRoutes.mealDetailsTest:
-        return MaterialPageRoute(builder: (context) => MealDetailsScreenTest());
       case AppRoutes.mealDetails:
         return MaterialPageRoute(builder: (context) => MealDetailsScreen());
       default:

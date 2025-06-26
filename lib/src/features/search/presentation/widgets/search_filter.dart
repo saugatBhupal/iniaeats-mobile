@@ -6,18 +6,17 @@ import 'package:inaeats/src/features/search/presentation/widgets/chip/filter_chi
 class SearchFilter extends StatelessWidget {
   const SearchFilter({super.key});
 
+  static const List<String> _filters = [
+    "Meal Kit",
+    "Ready to Eat",
+    "Price : Low-High",
+    "Price : High-Low",
+    "Discount/Promo",
+    "Vegan",
+    "Lactose Intolerant",
+  ];
   @override
   Widget build(BuildContext context) {
-    final List<String> _filters = [
-      "Meal Kit",
-      "Ready to Eat",
-      "Price : Low-High",
-      "Price : High-Low",
-      "Discount/Promo",
-      "Vegan",
-      "Lactose Intolerant",
-    ];
-
     return Padding(
       padding: const EdgeInsets.only(left: 16.0),
       child: Row(

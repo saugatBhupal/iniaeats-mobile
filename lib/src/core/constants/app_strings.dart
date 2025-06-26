@@ -68,6 +68,7 @@ class AppStrings {
   static const String ingredients = "Ingredients";
   static const String details = "Details";
   static const String reviews = "Reviews";
+  static const String recommended = "Recommended";
   static const String nutirents = "Nutirents";
   static const String allergens = "Allergens";
   static const String cartAppbar = "My Cart";

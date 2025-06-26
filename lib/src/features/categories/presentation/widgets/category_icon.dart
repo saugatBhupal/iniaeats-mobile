@@ -12,7 +12,13 @@ class CategoryIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset(image, height: 70, width: 70),
+        Container(
+          decoration: BoxDecoration(
+            color: Color(0xFFEAEFE4).withValues(alpha: 0.28),
+            shape: BoxShape.circle,
+          ),
+          child: Image.asset(image, height: 70, width: 70),
+        ),
         Text(
           label,
           textAlign: TextAlign.center,

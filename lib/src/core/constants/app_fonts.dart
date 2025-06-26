@@ -3,6 +3,8 @@ import 'dart:ui';
 class AppFonts {
   AppFonts._();
   static const String albertSans = "AlbertSans";
+
+  static var bodySmall;
 }
 
 class FontSize {

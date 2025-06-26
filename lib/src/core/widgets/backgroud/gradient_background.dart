@@ -18,7 +18,7 @@ class GradientBackground extends StatelessWidget {
           colors: [start ?? AppColors.white, end ?? AppColors.dew],
         ),
       ),
-      child: child,
+      child: SizedBox.expand(child: child),
     );
   }
 }

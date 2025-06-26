@@ -36,10 +36,7 @@ class MealDetailsImage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
                 AppbarBackButton(),
-                Text(
-                  AppStrings.swipeDown,
-                  style: TextStyle(color: Colors.white70), 
-                ),
+                Text(AppStrings.swipeDown, style: TextStyle(color: Colors.white70)),
                 CustomIconButton(icon: AppIcons.cart, count: 10),
               ],
             ),
@@ -66,11 +63,7 @@ class MealDetailsImage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 12),
-                    const FoodMarkSymbol(
-                      foodMark: FoodMark.veg,
-                      padding: 6,
-                      circleSize: 8,
-                    ),
+                    const FoodMarkSymbol(foodMark: FoodMark.veg, padding: 6, circleSize: 8),
                   ],
                 ),
                 const SizedBox(height: 8),
@@ -89,26 +82,11 @@ class MealDetailsImage extends StatelessWidget {
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      MealDetailsIconTextspan(
-                        icon: AppIcons.timer,
-                        label: "23 mins.",
-                      ),
-                      MealDetailsIconTextspan(
-                        icon: AppIcons.timer,
-                        label: "2 pax.",
-                      ),
-                      MealDetailsIconTextspan(
-                        icon: AppIcons.timer,
-                        label: "320",
-                      ),
-                      MealDetailsIconTextspan(
-                        icon: AppIcons.timer,
-                        label: "Medium",
-                      ),
-                      MealDetailsIconTextspan(
-                        icon: AppIcons.timer,
-                        label: "Kit",
-                      ),
+                      MealDetailsIconTextspan(icon: AppIcons.timer, label: "23 mins."),
+                      MealDetailsIconTextspan(icon: AppIcons.timer, label: "2 pax."),
+                      MealDetailsIconTextspan(icon: AppIcons.timer, label: "320"),
+                      MealDetailsIconTextspan(icon: AppIcons.timer, label: "Medium"),
+                      MealDetailsIconTextspan(icon: AppIcons.timer, label: "Kit"),
                     ],
                   ),
                 ),

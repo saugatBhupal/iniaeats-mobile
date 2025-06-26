@@ -13,12 +13,8 @@ class CustomerServiceScreen extends StatefulWidget {
 
 class _CustomerServiceScreenState extends State<CustomerServiceScreen> {
   late final TextEditingController _textController;
-  final List<Map<String, String>> _messages = [
-    {
-      'type': 'received',
-      'text': "Hello, this is customer service......",
-      'time': "an hour ago",
-    },
+  static const List<Map<String, String>> _messages = [
+    {'type': 'received', 'text': "Hello, this is customer service......", 'time': "an hour ago"},
     {
       'type': 'sent',
       'text': "Hello, I am your patient, I am very sick call....",
@@ -53,10 +49,7 @@ class _CustomerServiceScreenState extends State<CustomerServiceScreen> {
                 if (msg['type'] == 'sent') {
                   return SentTile(message: msg['text']!, sent: msg['time']!);
                 } else {
-                  return ReceivedTile(
-                    message: msg['text']!,
-                    sent: msg['time']!,
-                  );
+                  return ReceivedTile(message: msg['text']!, sent: msg['time']!);
                 }
               },
             ),

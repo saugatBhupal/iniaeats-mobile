@@ -14,6 +14,7 @@ class SearchTextField extends StatelessWidget {
       height: 40,
       child: SearchBar(
         hintText: AppStrings.searchPH,
+      
         backgroundColor: WidgetStatePropertyAll(AppColors.white),
         elevation: WidgetStatePropertyAll(0),
         shape: WidgetStatePropertyAll(
@@ -24,6 +25,9 @@ class SearchTextField extends StatelessWidget {
         ),
         hintStyle: WidgetStatePropertyAll(
           context.bodySmall.copyWith(color: AppColors.grey.withValues(alpha: 0.5)),
+        ),
+        textStyle: WidgetStatePropertyAll(
+          context.titleSmall.copyWith(color: AppColors.black.withValues(alpha: 0.6)),
         ),
         leading: SvgPicture.asset(AppIcons.search, width: 20, height: 20),
       ),

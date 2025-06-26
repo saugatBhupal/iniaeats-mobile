@@ -13,31 +13,25 @@ class PromoSlider extends StatefulWidget {
 
 class _PromoSliderState extends State<PromoSlider> {
   int _currentPage = 0;
-  late ScrollController _scrollController;
+  late final PageController _pageController;
   Timer? _autoScrollTimer;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
-    // _startAutoScroll();
+    _pageController = PageController(viewportFraction: 0.8);
+    _startAutoScroll();
   }
 
   void _startAutoScroll() {
-    _autoScrollTimer = Timer.periodic(const Duration(seconds: 2), (_) {
-      if (_scrollController.hasClients) {
+    _autoScrollTimer = Timer.periodic(const Duration(seconds: 3), (_) {
+      if (_pageController.hasClients) {
         final nextPage = (_currentPage + 1) % AppImages.promos.length;
-        final itemWidth = context.width * 0.8;
-
-        _scrollController.animateTo(
-          nextPage * itemWidth,
+        _pageController.animateToPage(
+          nextPage,
           duration: const Duration(milliseconds: 400),
           curve: Curves.fastOutSlowIn,
         );
-
-        setState(() {
-          _currentPage = nextPage;
-        });
       }
     });
   }
@@ -45,24 +39,26 @@ class _PromoSliderState extends State<PromoSlider> {
   @override
   void dispose() {
     _autoScrollTimer?.cancel();
-    _scrollController.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final height = context.height / 4;
-    final width = context.width * 0.8;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
           height: height,
-          child: ListView.builder(
-            controller: _scrollController,
+          child: PageView.builder(
+            padEnds: false,
+            controller: _pageController,
             scrollDirection: Axis.horizontal,
-            itemExtent: width,
+            onPageChanged: (index) {
+              setState(() => _currentPage = index);
+            },
             itemCount: AppImages.promos.length,
             itemBuilder: (context, index) {
               return buildPage(AppImages.promos[index], height, index);
@@ -80,10 +76,7 @@ class _PromoSliderState extends State<PromoSlider> {
               width: isActive ? 24 : 6,
               height: 6,
               decoration: BoxDecoration(
-                color:
-                    isActive
-                        ? AppColors.green
-                        : AppColors.green.withValues(alpha: 0.3),
+                color: isActive ? AppColors.green : AppColors.green.withValues(alpha: 0.3),
                 borderRadius: BorderRadius.circular(12),
               ),
             );

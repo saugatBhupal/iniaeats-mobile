@@ -8,18 +8,17 @@ import 'package:inaeats/src/features/search/presentation/widgets/chip/search_chi
 class SearchHistory extends StatelessWidget {
   const SearchHistory({super.key});
 
+  static const List<String> _history = [
+    "Spaghetti",
+    "Outdoor Kits",
+    "Soup",
+    "Cookies",
+    "Fresh Mango",
+    "Bakery",
+    "Chocochip cake",
+  ];
   @override
   Widget build(BuildContext context) {
-    final List<String> _history = [
-      "Spaghetti",
-      "Outdoor Kits",
-      "Soup",
-      "Cookies",
-      "Fresh Mango",
-      "Bakery",
-      "Chocochip cake",
-    ];
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(

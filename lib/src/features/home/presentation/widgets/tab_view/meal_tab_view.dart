@@ -4,7 +4,7 @@ import 'package:inaeats/src/features/home/presentation/widgets/card/meal_tab_car
 
 class MealTabView extends StatelessWidget {
   final String mealTimel;
-  const MealTabView({Key? key, required this.mealTimel}) : super(key: key);
+  const MealTabView({super.key, required this.mealTimel});
 
   @override
   Widget build(BuildContext context) {

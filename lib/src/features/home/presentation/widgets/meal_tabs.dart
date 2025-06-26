@@ -13,7 +13,7 @@ class MealTabs extends StatefulWidget {
 class _MealTabsState extends State<MealTabs> with TickerProviderStateMixin {
   late final TabController _tabController;
 
-  final List<String> mealOptions = [
+  static const List<String> _mealOptions = [
     AppStrings.breakfast,
     AppStrings.lunch,
     AppStrings.dinner,
@@ -24,7 +24,7 @@ class _MealTabsState extends State<MealTabs> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: mealOptions.length, vsync: this);
+    _tabController = TabController(length: _mealOptions.length, vsync: this);
     _tabController.addListener(() {
       if (_tabController.indexIsChanging == false) {
         setState(() {});
@@ -40,6 +40,8 @@ class _MealTabsState extends State<MealTabs> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final currentIndex = _tabController.index.clamp(0, _mealOptions.length - 1);
+
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: Column(
@@ -47,7 +49,7 @@ class _MealTabsState extends State<MealTabs> with TickerProviderStateMixin {
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 16.0),
-            child: AppTabbar(tabController: _tabController, tabs: mealOptions),
+            child: AppTabbar(tabController: _tabController, tabs: _mealOptions),
           ),
           const SizedBox(height: 12),
           AnimatedSwitcher(
@@ -55,8 +57,8 @@ class _MealTabsState extends State<MealTabs> with TickerProviderStateMixin {
             transitionBuilder:
                 (child, animation) => FadeTransition(opacity: animation, child: child),
             child: MealTabView(
-              key: ValueKey(_tabController.index),
-              mealTimel: mealOptions[_tabController.index],
+              key: ValueKey(currentIndex),
+              mealTimel: _mealOptions[_tabController.index],
             ),
           ),
         ],

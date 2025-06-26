@@ -9,8 +9,7 @@ import 'package:inaeats/src/features/meals/presentation/widgets/tabview/ingredie
 class MealDetailsTabbar extends StatelessWidget {
   final ScrollController scrollController;
 
-  const MealDetailsTabbar({Key? key, required this.scrollController})
-    : super(key: key);
+  const MealDetailsTabbar({Key? key, required this.scrollController}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +27,7 @@ class MealDetailsTabbar extends StatelessWidget {
             height: 40,
             child: TabBar(
               isScrollable: false,
-              indicator: OversizedTabIndicator(
-                height: 48,
-                color: AppColors.green,
-                radius: 30,
-              ),
+              indicator: OversizedTabIndicator(height: 48, color: AppColors.green, radius: 30),
               indicatorPadding: const EdgeInsets.symmetric(vertical: 6.0),
               indicatorSize: TabBarIndicatorSize.tab,
               dividerHeight: 0,
@@ -40,13 +35,8 @@ class MealDetailsTabbar extends StatelessWidget {
               tabAlignment: TabAlignment.center,
               unselectedLabelColor: AppColors.green,
               labelStyle: context.bodySmall.copyWith(color: AppColors.white),
-              unselectedLabelStyle: context.bodySmall.copyWith(
-                fontWeight: FontThickness.semiBold,
-              ),
-              labelPadding: const EdgeInsets.symmetric(
-                vertical: 0,
-                horizontal: 32.8,
-              ),
+              unselectedLabelStyle: context.bodySmall.copyWith(fontWeight: FontThickness.semiBold),
+              labelPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 32.8),
               splashFactory: NoSplash.splashFactory,
               tabs: [
                 Tab(text: AppStrings.ingredients),
@@ -75,11 +65,7 @@ class OversizedTabIndicator extends Decoration {
   final Color color;
   final double radius;
 
-  const OversizedTabIndicator({
-    this.height = 40,
-    required this.color,
-    this.radius = 12,
-  });
+  const OversizedTabIndicator({this.height = 40, required this.color, this.radius = 12});
 
   @override
   BoxPainter createBoxPainter([VoidCallback? onChanged]) {
@@ -98,14 +84,10 @@ class _OversizedTabIndicatorPainter extends BoxPainter {
     final double indicatorHeight = decoration.height;
     final double indicatorWidth = config.size!.width;
     final double dx = offset.dx;
-    final double dy =
-        offset.dy - (indicatorHeight - config.size!.height) / 1.75;
+    final double dy = offset.dy - (indicatorHeight - config.size!.height) / 1.75;
 
     final Rect rect = Rect.fromLTWH(dx, dy, indicatorWidth, indicatorHeight);
-    final RRect rRect = RRect.fromRectAndRadius(
-      rect,
-      Radius.circular(decoration.radius),
-    );
+    final RRect rRect = RRect.fromRectAndRadius(rect, Radius.circular(decoration.radius));
     canvas.drawRRect(rRect, paint);
   }
 }

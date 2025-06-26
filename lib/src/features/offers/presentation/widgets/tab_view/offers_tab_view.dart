@@ -12,7 +12,7 @@ class OffersTabView extends StatelessWidget {
       child: ListView.separated(
         shrinkWrap: true,
         physics: const AlwaysScrollableScrollPhysics(),
-        itemCount: 3,
+        itemCount: 1,
         separatorBuilder: (context, index) => SizedBox(height: 24),
         itemBuilder: (context, index) {
           return ClipRRect(

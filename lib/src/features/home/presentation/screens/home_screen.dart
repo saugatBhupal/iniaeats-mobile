@@ -14,8 +14,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HomeAppBar(),
-      body: SingleChildScrollView(
-        child: GradientBackground(
+      body: GradientBackground(
+        child: SingleChildScrollView(
           child: Column(
             children: [
               PromoSlider(),

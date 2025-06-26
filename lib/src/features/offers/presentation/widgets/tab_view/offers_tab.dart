@@ -13,7 +13,7 @@ class OffersTab extends StatefulWidget {
 class _OffersTabState extends State<OffersTab> with TickerProviderStateMixin {
   late final TabController _tabController;
 
-  final List<String> offers = [
+  final List<String> _offers = [
     AppStrings.trending,
     AppStrings.promo,
     AppStrings.valueMon,
@@ -23,7 +23,7 @@ class _OffersTabState extends State<OffersTab> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: offers.length, vsync: this);
+    _tabController = TabController(length: _offers.length, vsync: this);
     _tabController.addListener(() {
       if (_tabController.indexIsChanging == false) {
         setState(() {});
@@ -39,6 +39,7 @@ class _OffersTabState extends State<OffersTab> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final currentIndex = _tabController.index.clamp(0, _offers.length - 1);
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: Column(
@@ -46,7 +47,7 @@ class _OffersTabState extends State<OffersTab> with TickerProviderStateMixin {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 6.0),
-            child: AppTabbar(tabController: _tabController, tabs: offers),
+            child: AppTabbar(tabController: _tabController, tabs: _offers),
           ),
           const SizedBox(height: 12),
           AnimatedSwitcher(
@@ -54,8 +55,8 @@ class _OffersTabState extends State<OffersTab> with TickerProviderStateMixin {
             transitionBuilder:
                 (child, animation) => FadeTransition(opacity: animation, child: child),
             child: OffersTabView(
-              key: ValueKey(_tabController.index),
-              offers: offers[_tabController.index],
+              key: ValueKey(currentIndex),
+              offers: _offers[_tabController.index],
             ),
           ),
         ],
