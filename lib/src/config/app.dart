@@ -10,7 +10,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.mealDetails,
+      initialRoute: AppRoutes.trackOrders,
       onGenerateRoute: AppRouter.generateRoute,
       theme: AppTheme.getAppTheme(),
     );

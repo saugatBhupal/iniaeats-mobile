@@ -19,7 +19,7 @@ class RecipeRequirements extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        IconTitle(label: AppStrings.requirements),
+        IconTitle(label: AppStrings.requirements, fontSize: 14),
         const SizedBox(height: 12),
         Wrap(
           spacing: 20,

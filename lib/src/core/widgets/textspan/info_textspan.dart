@@ -8,7 +8,8 @@ import 'package:inaeats/src/core/constants/media_query_values.dart';
 class InfoTextspan extends StatelessWidget {
   final String info;
   final double? margin;
-  const InfoTextspan({super.key, required this.info, this.margin});
+  final Color? color;
+  const InfoTextspan({super.key, required this.info, this.margin, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class InfoTextspan extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       margin: EdgeInsets.symmetric(vertical: margin ?? 18),
       decoration: BoxDecoration(
-        color: AppColors.latte,
+        color: color ?? AppColors.latte,
         borderRadius: BorderRadius.circular(22.0),
       ),
       child: Row(

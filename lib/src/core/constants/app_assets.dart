@@ -19,6 +19,8 @@ class AppImages {
   static const String cartCoupon = "$_imagesPath/cart-coupon.png";
   static const String cartMessage = "$_imagesPath/cart-message.png";
   static const String mealDetails = "$_imagesPath/meal-details.png";
+  static const String map = "$_imagesPath/map.png";
+  static const String orders = "$_imagesPath/orders.png";
   static const List<String> promos = [
     "$_imagesPath/promos.png",
     "$_imagesPath/promos.png",
@@ -41,6 +43,8 @@ class AppIcons {
   static const String coupon = "$_iconsPath/coupon.png";
   static const String info = "$_iconsPath/info.svg";
   static const String calender = "$_iconsPath/calender.svg";
+  static const String location = "$_iconsPath/location.svg";
+  static const String truck = "$_iconsPath/truck.svg";
 }
 
 class AppGifs {

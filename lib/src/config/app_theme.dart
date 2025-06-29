@@ -27,15 +27,10 @@ class AppTheme {
         elevation: 0.0,
         iconTheme: IconThemeData(color: AppColors.black),
       ),
-      progressIndicatorTheme: const ProgressIndicatorThemeData(
-        color: AppColors.green,
-      ),
+      progressIndicatorTheme: const ProgressIndicatorThemeData(color: AppColors.green),
       buttonTheme: const ButtonThemeData(
         textTheme: ButtonTextTheme.primary,
-        colorScheme: ColorScheme.light(
-          primary: AppColors.green,
-          onPrimary: Colors.white,
-        ),
+        colorScheme: ColorScheme.light(primary: AppColors.green, onPrimary: Colors.white),
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(foregroundColor: AppColors.green),

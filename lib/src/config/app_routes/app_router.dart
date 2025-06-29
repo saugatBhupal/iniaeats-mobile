@@ -14,6 +14,9 @@ import 'package:inaeats/src/features/home/presentation/screens/home_screen.dart'
 import 'package:inaeats/src/features/meals/presentation/screens/meal_details_screen.dart';
 import 'package:inaeats/src/features/notifications/presentation/screens/notification_screen.dart';
 import 'package:inaeats/src/features/offers/presentation/screens/offers_screen.dart';
+import 'package:inaeats/src/features/orders/presentation/screens/all_orders_screen.dart';
+import 'package:inaeats/src/features/orders/presentation/screens/order_screen.dart';
+import 'package:inaeats/src/features/orders/presentation/screens/track_orders_screen.dart';
 import 'package:inaeats/src/features/recipe/presentation/screens/recipe_screen.dart';
 import 'package:inaeats/src/features/search/presentation/screens/search_results_screen.dart';
 import 'package:inaeats/src/features/search/presentation/screens/search_screen.dart';
@@ -59,6 +62,12 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const RecipeScreen());
       case AppRoutes.mealDetails:
         return MaterialPageRoute(builder: (context) => MealDetailsScreen());
+      case AppRoutes.allOrders:
+        return MaterialPageRoute(builder: (context) => AllOrdersScreen());
+      case AppRoutes.orders:
+        return MaterialPageRoute(builder: (context) => OrderScreen());
+      case AppRoutes.trackOrders:
+        return MaterialPageRoute(builder: (context) => TrackOrdersScreen());
       default:
         return MaterialPageRoute(builder: (context) => const NoRouteFound());
     }

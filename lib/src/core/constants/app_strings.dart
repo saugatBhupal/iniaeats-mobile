@@ -4,13 +4,11 @@ class AppStrings {
   static const String noRoute = "No Route Found";
   static const String fieldRequired = "is required";
   static const String validEmail = "Please enter valid email address";
-  static const String passwordLength =
-      "Make sure your password is atleast 6 letters long.";
+  static const String passwordLength = "Make sure your password is atleast 6 letters long.";
   static const String passwordMatch = "Password does not match";
   static const String otpLength = "OTP must be 6 characters long";
   static const String invalidDob = "Invalid format. Use DD - MM - YYYY";
-  static const String invalidPassword =
-      "Must include a number and special character";
+  static const String invalidPassword = "Must include a number and special character";
   static const List<String> onboardingTitles = [
     "Forget the hassle of meal prep",
     "Everything catered to your taste ",
@@ -38,6 +36,7 @@ class AppStrings {
   static const String requestOTP = "Request OTP";
   static const String code = "(+977)";
   static const String contin = "Continue";
+  static const String orders = "Orders";
   static const String searchPH = "What do you want to order ?";
   static const String breakfast = "Breakfast";
   static const String lunch = "Lunch";
@@ -88,16 +87,13 @@ class AppStrings {
   static const String boxTitle = "What's in the box?";
   static const String followTitle = "Follow the steps";
   static const String swipeDown = "Swipe down for recipe";
-  static const String orderInfo =
-      "You cannot update the cart after placing order";
-  static const String recipeInfo =
-      "Scroll down to read the full step-by-step recipe.";
+  static const String orderInfo = "You cannot update the cart after placing order";
+  static const String recipeInfo = "Scroll down to read the full step-by-step recipe.";
   static const String storageInfo = "Best consumed within 3 days of purchase.";
-  static const String packInfo =
-      "All the ingredients are freshly packed on order";
-  static const String couponInfo =
-      "Only one discount or promo can be used per orderOnly one discount or promo can be used per order";
-  static const String otpSentMessage =
-      "A 6 digit OTP has been sent to your number";
+  static const String packInfo = "All the ingredients are freshly packed on order";
+  static const String couponInfo = "Only one discount or promo can be used per order";
+  static const String otpSentMessage = "A 6 digit OTP has been sent to your number";
   static const String changeNumber = "Change number";
+  static const String trackOrder = "Track Order";
+  static const String peakHourMsg = "Your order might be delayed during peak hours.";
 }

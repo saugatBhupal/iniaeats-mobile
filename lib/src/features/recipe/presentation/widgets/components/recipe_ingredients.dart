@@ -8,7 +8,7 @@ class RecipeIngredients extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> _ingredients = [
+    final List<String> ingredients = [
       "26g of unsalted butter",
       "3g tomato paste",
       "150g dried spaghetti",
@@ -28,7 +28,7 @@ class RecipeIngredients extends StatelessWidget {
             spacing: 20,
             runSpacing: 9,
             children:
-                _ingredients.map((ingredient) {
+                ingredients.map((ingredient) {
                   return IngredientsTextspan(ingredient: ingredient);
                 }).toList(),
           ),

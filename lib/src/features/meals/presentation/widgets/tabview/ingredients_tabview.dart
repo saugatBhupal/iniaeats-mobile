@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/widgets/textspan/info_textspan.dart';
-import 'package:inaeats/src/features/recipe/presentation/widgets/recipe_ingredients.dart';
+import 'package:inaeats/src/features/recipe/presentation/widgets/components/recipe_ingredients.dart';
 
 class IngredientsTabview extends StatelessWidget {
   final ScrollController? scrollController;

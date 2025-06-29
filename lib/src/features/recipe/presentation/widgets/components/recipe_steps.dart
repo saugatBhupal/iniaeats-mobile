@@ -21,17 +21,14 @@ class RecipeSteps extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Column(
         children: [
-          IconTitle(label: AppStrings.followTitle),
+          IconTitle(label: AppStrings.followTitle, fontSize: 14),
           SizedBox(height: 10),
           Wrap(
             spacing: 20,
             runSpacing: 9,
             children: [
               ...List.generate(_steps.length, (index) {
-                return RecipeTextspan(
-                  step: _steps[index],
-                  stepNumber: index + 1,
-                );
+                return RecipeTextspan(step: _steps[index], stepNumber: index + 1);
               }),
             ],
           ),

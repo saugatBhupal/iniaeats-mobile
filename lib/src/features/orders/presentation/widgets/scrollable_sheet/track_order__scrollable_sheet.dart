@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+import 'package:inaeats/src/core/constants/app_colors.dart';
+import 'package:inaeats/src/core/constants/app_strings.dart';
+import 'package:inaeats/src/core/widgets/textspan/info_textspan.dart';
+import 'package:inaeats/src/features/orders/presentation/widgets/listview/track_order_status_list.dart';
+
+class TrackOrderScrollableSheet extends StatelessWidget {
+  const TrackOrderScrollableSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return DraggableScrollableSheet(
+      initialChildSize: 0.44,
+      minChildSize: 0.44,
+      maxChildSize: 0.70,
+      builder: (context, scrollController) {
+        return Container(
+          padding: const EdgeInsets.only(bottom: 24, left: 6, right: 6),
+          decoration: BoxDecoration(
+            color: AppColors.ceramic,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.black.withValues(alpha: 0.12),
+                offset: Offset(1, 1),
+                blurRadius: 20,
+                spreadRadius: 0,
+              ),
+            ],
+          ),
+          child: SingleChildScrollView(
+            controller: scrollController,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                InfoTextspan(info: AppStrings.peakHourMsg, color: AppColors.ceramic, margin: 14),
+                TrackOrderStatusList(),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
