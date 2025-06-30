@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inaeats/src/config/app_routes/app_routes.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
@@ -40,16 +41,19 @@ class HomeCustomerService extends StatelessWidget {
               letterSpacing: 0,
             ),
           ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 20),
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            decoration: BoxDecoration(
-              color: AppColors.white,
-              borderRadius: BorderRadius.all(Radius.circular(24)),
-            ),
-            child: Text(
-              _buttonLabel,
-              style: context.bodySmall.copyWith(fontWeight: FontThickness.bold, letterSpacing: 0),
+          GestureDetector(
+            onTap: () => Navigator.of(context).pushNamed(AppRoutes.customerService),
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 20),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.all(Radius.circular(24)),
+              ),
+              child: Text(
+                _buttonLabel,
+                style: context.bodySmall.copyWith(fontWeight: FontThickness.bold, letterSpacing: 0),
+              ),
             ),
           ),
         ],

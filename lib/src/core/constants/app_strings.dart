@@ -36,7 +36,6 @@ class AppStrings {
   static const String requestOTP = "Request OTP";
   static const String code = "(+977)";
   static const String contin = "Continue";
-  static const String orders = "Orders";
   static const String searchPH = "What do you want to order ?";
   static const String breakfast = "Breakfast";
   static const String lunch = "Lunch";
@@ -96,4 +95,13 @@ class AppStrings {
   static const String changeNumber = "Change number";
   static const String trackOrder = "Track Order";
   static const String peakHourMsg = "Your order might be delayed during peak hours.";
+
+  static const String version = "V.1.1";
+  static const String inaing = "inaing";
+  static const String appName = "Inaeats";
+  static const String home = "Home";
+  static const String orders = "Orders";
+  static const String browse = "Browse";
+  static const String offers = "Offers";
+  static const String profile = "Profile";
 }

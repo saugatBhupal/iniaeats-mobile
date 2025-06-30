@@ -3,10 +3,10 @@ import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/core/widgets/textspan/info_textspan.dart';
-import 'package:inaeats/src/features/meals/presentation/widgets/allergens_container.dart';
-import 'package:inaeats/src/features/meals/presentation/widgets/nutrients_container.dart';
-import 'package:inaeats/src/features/meals/presentation/widgets/requirements_container.dart';
-import 'package:inaeats/src/features/meals/presentation/widgets/tags_container.dart';
+import 'package:inaeats/src/features/products/presentation/widgets/allergens_container.dart';
+import 'package:inaeats/src/features/products/presentation/widgets/nutrients_container.dart';
+import 'package:inaeats/src/features/products/presentation/widgets/requirements_container.dart';
+import 'package:inaeats/src/features/products/presentation/widgets/tags_container.dart';
 
 class DetailsTabview extends StatelessWidget {
   final ScrollController? scrollController;

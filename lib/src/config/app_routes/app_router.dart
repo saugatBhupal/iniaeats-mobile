@@ -10,8 +10,9 @@ import 'package:inaeats/src/features/cart/presentation/screens/cart_screen.dart'
 import 'package:inaeats/src/features/categories/presentation/screens/categories_screen.dart';
 import 'package:inaeats/src/features/coupons/presentation/screens/coupons_screen.dart';
 import 'package:inaeats/src/features/customer_service/presentation/screens/customer_service_screen.dart';
+import 'package:inaeats/src/features/home/presentation/bloc/home_bloc.dart';
 import 'package:inaeats/src/features/home/presentation/screens/home_screen.dart';
-import 'package:inaeats/src/features/meals/presentation/screens/meal_details_screen.dart';
+import 'package:inaeats/src/features/products/presentation/screens/meal_details_screen.dart';
 import 'package:inaeats/src/features/notifications/presentation/screens/notification_screen.dart';
 import 'package:inaeats/src/features/offers/presentation/screens/offers_screen.dart';
 import 'package:inaeats/src/features/orders/presentation/screens/all_orders_screen.dart';
@@ -20,7 +21,9 @@ import 'package:inaeats/src/features/orders/presentation/screens/track_orders_sc
 import 'package:inaeats/src/features/recipe/presentation/screens/recipe_screen.dart';
 import 'package:inaeats/src/features/search/presentation/screens/search_results_screen.dart';
 import 'package:inaeats/src/features/search/presentation/screens/search_screen.dart';
+import 'package:inaeats/src/features/splash/presentation/bloc/splash_bloc.dart';
 import 'package:inaeats/src/features/splash/presentation/screens/onboarding_screen.dart';
+import 'package:inaeats/src/features/splash/presentation/screens/splash_screen.dart';
 
 class AppRouter {
   AppRouter._();
@@ -30,6 +33,12 @@ class AppRouter {
     switch (settings.name) {
       case AppRoutes.root:
         return MaterialPageRoute(builder: (context) => const NoRouteFound());
+      case AppRoutes.splash:
+        return MaterialPageRoute(
+          builder:
+              (context) =>
+                  BlocProvider(create: (context) => sl<SplashBloc>(), child: const SplashScreen()),
+        );
       case AppRoutes.onboarding:
         return MaterialPageRoute(builder: (context) => const OnboardingScreen());
       case AppRoutes.authentication:
@@ -41,7 +50,11 @@ class AppRouter {
               ),
         );
       case AppRoutes.home:
-        return MaterialPageRoute(builder: (context) => const HomeScreen());
+        return MaterialPageRoute(
+          builder:
+              (context) =>
+                  BlocProvider(create: (context) => sl<HomeBloc>(), child: const HomeScreen()),
+        );
       case AppRoutes.categories:
         return MaterialPageRoute(builder: (context) => const CategoriesScreen());
       case AppRoutes.offers:

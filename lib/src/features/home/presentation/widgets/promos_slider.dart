@@ -20,7 +20,7 @@ class _PromoSliderState extends State<PromoSlider> {
   void initState() {
     super.initState();
     _pageController = PageController(viewportFraction: 0.8);
-    _startAutoScroll();
+    // _startAutoScroll();
   }
 
   void _startAutoScroll() {

@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:inaeats/src/core/domain/mappers/remote/user_mappers.dart';
 import 'package:inaeats/src/core/error/failure.dart';
 import 'package:inaeats/src/core/shared_prefs.dart/user_shared_pref.dart';
 import 'package:inaeats/src/features/authentication/data/datasources/remote/authentication_remote_datasource.dart';
@@ -44,6 +45,7 @@ class AuthenticationRemoteRepository implements AuthenticationRepository {
       );
       final UserSharedPref userSharedPref = UserSharedPref();
       userSharedPref.setUserToken(res.token);
+      UserSharedPref.setUser(res.user.toDomain());
       return Right(res);
     } catch (e) {
       return Left(Failure(message: e.toString()));

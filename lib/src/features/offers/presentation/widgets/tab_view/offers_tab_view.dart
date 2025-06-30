@@ -12,13 +12,13 @@ class OffersTabView extends StatelessWidget {
       child: ListView.separated(
         shrinkWrap: true,
         physics: const AlwaysScrollableScrollPhysics(),
-        itemCount: 1,
+        itemCount: AppImages.promos.length,
         separatorBuilder: (context, index) => SizedBox(height: 24),
         itemBuilder: (context, index) {
           return ClipRRect(
             borderRadius: BorderRadius.circular(18),
             child: Image.asset(
-              AppImages.spotlightCard,
+              AppImages.promos[index],
               height: 200,
               width: double.infinity,
               fit: BoxFit.cover,

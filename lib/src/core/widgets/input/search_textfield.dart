@@ -6,15 +6,22 @@ import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
 
 class SearchTextField extends StatelessWidget {
-  const SearchTextField({super.key});
+  final Function()? onTap;
+  SearchTextField({super.key, this.onTap});
 
+  final FocusNode _focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 40,
       child: SearchBar(
+        textInputAction: TextInputAction.search,
         hintText: AppStrings.searchPH,
-      
+        onTap: onTap,
+        onTapOutside: (event) {
+          _focusNode.unfocus();
+        },
+        focusNode: _focusNode,
         backgroundColor: WidgetStatePropertyAll(AppColors.white),
         elevation: WidgetStatePropertyAll(0),
         shape: WidgetStatePropertyAll(

@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:inaeats/src/core/constants/app_enums.dart';
 import 'package:intl/intl.dart';
+import 'package:uuid/uuid.dart';
 
 class User extends Equatable {
   final String id;
@@ -30,8 +31,9 @@ class User extends Equatable {
     required this.hasRegistered,
     required this.userRole,
   });
+
   factory User.initial() => User(
-    id: '',
+    id: Uuid().v4(),
     fullname: '',
     email: '',
     phone: '',
@@ -44,6 +46,7 @@ class User extends Equatable {
     hasRegistered: false,
     userRole: Role.user,
   );
+
   User copyWith({
     String? id,
     String? fullname,
@@ -80,7 +83,10 @@ class User extends Equatable {
       fullname: json['fullname'] as String? ?? '',
       email: json['email'] as String? ?? '',
       phone: json['phone'] as String? ?? '',
-      gender: Gender.values.firstWhere((e) => e.name == (json['gender'] as String?)?.toLowerCase(), orElse: () => Gender.male),
+      gender: Gender.values.firstWhere(
+        (e) => e.name == (json['gender'] as String?)?.toLowerCase(),
+        orElse: () => Gender.male,
+      ),
       dob: json['dob'] != null ? DateFormat('dd-MM-yyyy').parse(json['dob']) : DateTime(2000, 1, 1),
       age: json['age'] as int? ?? 18,
       useType: UserType.values.firstWhere(
@@ -88,9 +94,13 @@ class User extends Equatable {
         orElse: () => UserType.user,
       ),
       otp: json['otp'] as String? ?? '',
-      otpExpireTime: json['otpExpireTime'] != null ? DateTime.parse(json['otpExpireTime']) : DateTime.now(),
+      otpExpireTime:
+          json['otpExpireTime'] != null ? DateTime.parse(json['otpExpireTime']) : DateTime.now(),
       hasRegistered: json['hasRegistered'] as bool? ?? false,
-      userRole: Role.values.firstWhere((e) => e.name == (json['userRole'] as String?)?.toLowerCase(), orElse: () => Role.user),
+      userRole: Role.values.firstWhere(
+        (e) => e.name == (json['userRole'] as String?)?.toLowerCase(),
+        orElse: () => Role.user,
+      ),
     );
   }
 

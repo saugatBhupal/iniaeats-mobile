@@ -13,7 +13,6 @@ class AppImages {
   static const String readyEat = "$_imagesPath/ready-to-eat.png";
   static const String vegan = "$_imagesPath/vegan.png";
   static const String authentication = "$_imagesPath/authentication.png";
-  static const String spotlightCard = "$_imagesPath/spotlights-card.png";
   static const String notification = "$_imagesPath/notification.png";
   static const String recommended = "$_imagesPath/recommended.png";
   static const String cartCoupon = "$_imagesPath/cart-coupon.png";
@@ -23,9 +22,15 @@ class AppImages {
   static const String orders = "$_imagesPath/orders.png";
   static const List<String> promos = [
     "$_imagesPath/promos.png",
-    "$_imagesPath/promos.png",
-    "$_imagesPath/promos.png",
-    "$_imagesPath/promos.png",
+    "$_imagesPath/promos-2.png",
+    "$_imagesPath/promos-3.png",
+    "$_imagesPath/promos-4.png",
+    "$_imagesPath/promos-5.png",
+  ];
+  static const List<String> spotlight = [
+    "$_imagesPath/spotlights-card.png",
+    "$_imagesPath/spotlights-card-2.png",
+    "$_imagesPath/spotlights-card-3.png",
   ];
 }
 
@@ -45,6 +50,11 @@ class AppIcons {
   static const String calender = "$_iconsPath/calender.svg";
   static const String location = "$_iconsPath/location.svg";
   static const String truck = "$_iconsPath/truck.svg";
+  static const String home = "$_iconsPath/home.svg";
+  static const String orders = "$_iconsPath/orders.svg";
+  static const String browse = "$_iconsPath/browse.svg";
+  static const String offers = "$_iconsPath/offers.svg";
+  static const String profile = "$_iconsPath/profile.svg";
 }
 
 class AppGifs {

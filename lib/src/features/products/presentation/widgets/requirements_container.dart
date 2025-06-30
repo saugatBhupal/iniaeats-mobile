@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/widgets/textspan/icon_title.dart';
-import 'package:inaeats/src/features/meals/presentation/widgets/tags_container.dart';
+import 'package:inaeats/src/features/products/presentation/widgets/tags_container.dart';
 
 class RequirementsContainer extends StatelessWidget {
   const RequirementsContainer({super.key});

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inaeats/src/config/app_routes/app_routes.dart';
 import 'package:inaeats/src/core/widgets/input/search_textfield.dart';
 import 'package:inaeats/src/core/widgets/appbar/AppbarFunctions.dart';
 
@@ -17,7 +18,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           Appbarfunctions(),
           const SizedBox(height: 14),
-          SearchTextField(),
+          SearchTextField(onTap: () => Navigator.of(context).pushNamed(AppRoutes.search)),
         ],
       ),
     );

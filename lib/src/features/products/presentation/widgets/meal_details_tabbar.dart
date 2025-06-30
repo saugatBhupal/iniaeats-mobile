@@ -3,8 +3,8 @@ import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
-import 'package:inaeats/src/features/meals/presentation/widgets/tabview/details_tabview.dart';
-import 'package:inaeats/src/features/meals/presentation/widgets/tabview/ingredients_tabview.dart';
+import 'package:inaeats/src/features/products/presentation/widgets/tabview/details_tabview.dart';
+import 'package:inaeats/src/features/products/presentation/widgets/tabview/ingredients_tabview.dart';
 
 class MealDetailsTabbar extends StatelessWidget {
   final ScrollController scrollController;

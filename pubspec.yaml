@@ -27,6 +27,7 @@ dependencies:
   flutter_bloc: ^9.1.1
   fluttertoast: ^8.2.12
   shared_preferences: ^2.5.3
+  uuid: ^4.5.1
 
 dev_dependencies:
   flutter_test:
@@ -42,6 +43,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/gifs/
+    - assets/data/
 
   fonts:
     - family: AlbertSans

@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 import 'package:inaeats/src/features/authentication/data/dto/user/basic_user_details_with_token.dart';
 import 'package:inaeats/src/features/authentication/data/dto/otp/otp_creation_response_dto.dart';
 import 'package:inaeats/src/features/authentication/data/dto/otp/verify_otp_request_dto.dart';
-import 'package:inaeats/src/features/authentication/data/dto/user/basic_user_details_with_token.dart';
 import 'package:inaeats/src/features/authentication/data/dto/user/register_user_request_dto.dart';
 import 'package:inaeats/src/features/authentication/domain/usecases/get_otp_usecase.dart';
 import 'package:inaeats/src/features/authentication/domain/usecases/register_user_usecase.dart';

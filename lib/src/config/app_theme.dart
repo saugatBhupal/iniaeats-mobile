@@ -27,6 +27,7 @@ class AppTheme {
         elevation: 0.0,
         iconTheme: IconThemeData(color: AppColors.black),
       ),
+      textSelectionTheme: TextSelectionThemeData(cursorColor: AppColors.grey),
       progressIndicatorTheme: const ProgressIndicatorThemeData(color: AppColors.green),
       buttonTheme: const ButtonThemeData(
         textTheme: ButtonTextTheme.primary,

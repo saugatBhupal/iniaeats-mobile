@@ -10,18 +10,18 @@ import 'package:inaeats/src/features/categories/presentation/widgets/category_ic
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
   static const List<ProductCategory> _categories = [
-    ProductCategory(label: AppStrings.drinks, image: AppImages.drinks),
-    ProductCategory(label: AppStrings.readyEat, image: AppImages.readyEat),
-    ProductCategory(label: AppStrings.quickbites, image: AppImages.quickbites),
-    ProductCategory(label: AppStrings.gourmet, image: AppImages.gourmet),
-    ProductCategory(label: AppStrings.fruits, image: AppImages.fruits),
-    ProductCategory(label: AppStrings.vegan, image: AppImages.vegan),
-    ProductCategory(label: AppStrings.drinks, image: AppImages.drinks),
-    ProductCategory(label: AppStrings.chinese, image: AppImages.readyEat),
-    ProductCategory(label: AppStrings.quickbites, image: AppImages.quickbites),
-    ProductCategory(label: AppStrings.gourmet, image: AppImages.gourmet),
-    ProductCategory(label: AppStrings.fruits, image: AppImages.fruits),
-    ProductCategory(label: AppStrings.vegan, image: AppImages.vegan),
+    // ProductCategory(label: AppStrings.drinks, image: AppImages.drinks),
+    // ProductCategory(label: AppStrings.readyEat, image: AppImages.readyEat),
+    // ProductCategory(label: AppStrings.quickbites, image: AppImages.quickbites),
+    // ProductCategory(label: AppStrings.gourmet, image: AppImages.gourmet),
+    // ProductCategory(label: AppStrings.fruits, image: AppImages.fruits),
+    // ProductCategory(label: AppStrings.vegan, image: AppImages.vegan),
+    // ProductCategory(label: AppStrings.drinks, image: AppImages.drinks),
+    // ProductCategory(label: AppStrings.chinese, image: AppImages.readyEat),
+    // ProductCategory(label: AppStrings.quickbites, image: AppImages.quickbites),
+    // ProductCategory(label: AppStrings.gourmet, image: AppImages.gourmet),
+    // ProductCategory(label: AppStrings.fruits, image: AppImages.fruits),
+    // ProductCategory(label: AppStrings.vegan, image: AppImages.vegan),
   ];
 
   @override
@@ -44,7 +44,7 @@ class CategoriesScreen extends StatelessWidget {
               ),
               itemBuilder: (context, index) {
                 final item = _categories[index];
-                return CategoryIcon(label: item.label, image: item.image);
+                return CategoryIcon(label: " item.label", image: item.image);
               },
             ),
           ),

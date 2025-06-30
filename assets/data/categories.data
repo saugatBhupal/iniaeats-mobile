@@ -1,0 +1,9 @@
+[
+  { "label": "Drinks", "image": "assets/images/drinks.png" },
+  { "label": "Ready to Eat", "image": "assets/images/ready-to-eat.png" },
+  { "label": "Quick Bites", "image": "assets/images/quickbites.png" },
+  { "label": "Gourmet", "image": "assets/images/gourmet.png" },
+  { "label": "Fruits", "image": "assets/images/fruits.png" },
+  { "label": "Vegan", "image": "assets/images/vegan.png" },
+  { "label": "Chinese", "image": "assets/images/ready-to-eat.png" }
+]

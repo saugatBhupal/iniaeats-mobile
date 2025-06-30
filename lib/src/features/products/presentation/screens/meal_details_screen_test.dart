@@ -8,8 +8,8 @@ import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/core/widgets/buttons/back_button.dart';
 import 'package:inaeats/src/core/widgets/buttons/icon_button.dart';
 import 'package:inaeats/src/core/widgets/symbols/food_mark_symbol.dart';
-import 'package:inaeats/src/features/meals/presentation/widgets/tabview/details_tabview.dart';
-import 'package:inaeats/src/features/meals/presentation/widgets/tabview/ingredients_tabview.dart';
+import 'package:inaeats/src/features/products/presentation/widgets/tabview/details_tabview.dart';
+import 'package:inaeats/src/features/products/presentation/widgets/tabview/ingredients_tabview.dart';
 
 class MealDetailsScreenTest extends StatefulWidget {
   const MealDetailsScreenTest({Key? key}) : super(key: key);

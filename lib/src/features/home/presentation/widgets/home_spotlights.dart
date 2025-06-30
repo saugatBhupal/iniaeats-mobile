@@ -16,13 +16,13 @@ class HomeSpotlights extends StatelessWidget {
           ListView.separated(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: 3,
+            itemCount: AppImages.spotlight.length,
             separatorBuilder: (context, index) => const SizedBox(height: 18),
             itemBuilder: (context, index) {
               return ClipRRect(
                 borderRadius: BorderRadius.circular(18),
                 child: Image.asset(
-                  AppImages.spotlightCard,
+                  AppImages.spotlight[index],
                   height: 200,
                   width: double.infinity,
                   fit: BoxFit.cover,

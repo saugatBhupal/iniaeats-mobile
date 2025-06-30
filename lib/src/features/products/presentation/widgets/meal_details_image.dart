@@ -8,7 +8,7 @@ import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/core/widgets/buttons/back_button.dart';
 import 'package:inaeats/src/core/widgets/buttons/icon_button.dart';
 import 'package:inaeats/src/core/widgets/symbols/food_mark_symbol.dart';
-import 'package:inaeats/src/features/meals/presentation/widgets/textspan/meal_details_icon_textspan.dart';
+import 'package:inaeats/src/features/products/presentation/widgets/textspan/meal_details_icon_textspan.dart';
 
 class MealDetailsImage extends StatelessWidget {
   final double scrollOffset;

@@ -8,6 +8,8 @@ class ApiEndpoints {
   // For iOS
   // static const String baseUrl = "http://localhost:3000/api/v1";
 
+  // user
+  static const String fetchUserByID = "$baseUrl/";
   // authentication
   static const String getOtp = "$baseUrl/otp/send";
   static const String verifyOtp = "$baseUrl/otp/login";

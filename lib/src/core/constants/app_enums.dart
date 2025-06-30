@@ -9,3 +9,5 @@ enum Gender { male, female, other }
 enum UserType { admin, user, delivery }
 
 enum Role { admin, user, delivery, none }
+
+enum DietType { vegetarian, nonvegetarian, vegan }
