@@ -1,31 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:inaeats/src/core/constants/app_assets.dart';
 
 class OffersTabView extends StatelessWidget {
-  final String offers;
+  final List<String> offers;
   const OffersTabView({super.key, required this.offers});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: ListView.separated(
-        shrinkWrap: true,
-        physics: const AlwaysScrollableScrollPhysics(),
-        itemCount: AppImages.promos.length,
-        separatorBuilder: (context, index) => SizedBox(height: 24),
-        itemBuilder: (context, index) {
-          return ClipRRect(
-            borderRadius: BorderRadius.circular(18),
-            child: Image.asset(
-              AppImages.promos[index],
-              height: 200,
-              width: double.infinity,
-              fit: BoxFit.cover,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12),
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(minHeight: constraints.maxHeight),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: List.generate(offers.length, (index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 24),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(18),
+                    child: Image.asset(
+                      offers[index],
+                      height: 200,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                );
+              }),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

@@ -3,7 +3,7 @@ import 'package:inaeats/src/core/widgets/backgroud/gradient_background.dart';
 import 'package:inaeats/src/features/home/presentation/widgets/home_categories.dart';
 import 'package:inaeats/src/features/home/presentation/widgets/home_customer_service.dart';
 import 'package:inaeats/src/features/home/presentation/widgets/home_spotlights.dart';
-import 'package:inaeats/src/features/home/presentation/widgets/meal_tabs.dart';
+import 'package:inaeats/src/features/home/presentation/widgets/home_product_tabs.dart';
 import 'package:inaeats/src/features/home/presentation/widgets/promos_slider.dart';
 
 class HomeBody extends StatelessWidget {
@@ -16,7 +16,7 @@ class HomeBody extends StatelessWidget {
         child: Column(
           children: [
             PromoSlider(),
-            MealTabs(),
+            HomeProductTabs(),
             HomeCategories(),
             HomeSpotlights(),
             HomeCustomerService(),

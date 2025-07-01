@@ -12,6 +12,7 @@ import 'package:inaeats/src/features/coupons/presentation/screens/coupons_screen
 import 'package:inaeats/src/features/customer_service/presentation/screens/customer_service_screen.dart';
 import 'package:inaeats/src/features/home/presentation/bloc/home_bloc.dart';
 import 'package:inaeats/src/features/home/presentation/screens/home_screen.dart';
+import 'package:inaeats/src/features/notifications/presentation/bloc/app_notification_bloc.dart';
 import 'package:inaeats/src/features/products/presentation/screens/meal_details_screen.dart';
 import 'package:inaeats/src/features/notifications/presentation/screens/notification_screen.dart';
 import 'package:inaeats/src/features/offers/presentation/screens/offers_screen.dart';
@@ -60,7 +61,13 @@ class AppRouter {
       case AppRoutes.offers:
         return MaterialPageRoute(builder: (context) => const OffersScreen());
       case AppRoutes.notifications:
-        return MaterialPageRoute(builder: (context) => const NotificationScreen());
+        return MaterialPageRoute(
+          builder:
+              (context) => BlocProvider(
+                create: (context) => sl<AppNotificationBloc>(),
+                child: const NotificationScreen(),
+              ),
+        );
       case AppRoutes.customerService:
         return MaterialPageRoute(builder: (context) => const CustomerServiceScreen());
       case AppRoutes.search:

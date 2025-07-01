@@ -8,9 +8,6 @@ class OffersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: OffersAppbar(),
-      body: GradientBackground(child: OffersTab()),
-    );
+    return Scaffold(appBar: OffersAppbar(), body: GradientBackground(child: OffersTab()));
   }
 }

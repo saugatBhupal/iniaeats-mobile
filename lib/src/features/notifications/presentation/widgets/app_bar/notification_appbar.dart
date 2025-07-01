@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/core/widgets/buttons/back_button.dart';
+import 'package:inaeats/src/features/notifications/presentation/bloc/app_notification_bloc.dart';
 import 'package:inaeats/src/features/notifications/presentation/widgets/buttons/clear_button.dart';
 
 class NotificationAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -29,7 +31,7 @@ class NotificationAppbar extends StatelessWidget implements PreferredSizeWidget 
               ),
             ),
             Spacer(),
-            ClearButton(),
+            ClearButton(onTap: () => context.read<AppNotificationBloc>().add(ClearNotification())),
           ],
         ),
       ),

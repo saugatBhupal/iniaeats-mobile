@@ -17,6 +17,7 @@ class HomeCustomerService extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.darkgreen,
+      margin: EdgeInsets.only(top: 18),
       padding: EdgeInsets.symmetric(horizontal: 24, vertical: 26),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

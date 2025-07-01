@@ -94,7 +94,7 @@ class _MealDetailsScreenTestState extends State<MealDetailsScreenTest>
                                   ),
                                   const SizedBox(width: 12),
                                   const FoodMarkSymbol(
-                                    foodMark: FoodMark.veg,
+                                    dietType: DietType.nonvegetarian,
                                     padding: 6,
                                     circleSize: 8,
                                   ),

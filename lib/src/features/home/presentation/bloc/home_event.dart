@@ -12,3 +12,9 @@ class ChangeScreenModule extends HomeEvent {
 
   const ChangeScreenModule(this.index);
 }
+
+class SwitchMealTabs extends HomeEvent {
+  final String productType;
+
+  const SwitchMealTabs(this.productType);
+}

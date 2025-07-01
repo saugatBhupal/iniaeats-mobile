@@ -13,7 +13,10 @@ class AppImages {
   static const String readyEat = "$_imagesPath/ready-to-eat.png";
   static const String vegan = "$_imagesPath/vegan.png";
   static const String authentication = "$_imagesPath/authentication.png";
-  static const String notification = "$_imagesPath/notification.png";
+  static const String orderCancelled = "$_imagesPath/order-cancelled.png";
+  static const String orderSuccess = "$_imagesPath/order-successful.png";
+  static const String newCoupon = "$_imagesPath/new-coupon.png";
+  static const String newService = "$_imagesPath/new-service.png";
   static const String recommended = "$_imagesPath/recommended.png";
   static const String cartCoupon = "$_imagesPath/cart-coupon.png";
   static const String cartMessage = "$_imagesPath/cart-message.png";
@@ -32,6 +35,12 @@ class AppImages {
     "$_imagesPath/spotlights-card-2.png",
     "$_imagesPath/spotlights-card-3.png",
   ];
+  static const List<String> valueForMoney = [
+    "$_imagesPath/promos-5.png",
+    "$_imagesPath/spotlights-card-3.png",
+    "$_imagesPath/promos-3.png",
+  ];
+  static const List<String> discount = ["$_imagesPath/discount.png", "$_imagesPath/discount-2.png"];
 }
 
 class AppIcons {

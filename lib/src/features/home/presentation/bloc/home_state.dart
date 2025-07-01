@@ -16,3 +16,19 @@ class ScreenModuleChanged extends HomeState {
   @override
   List<Object> get props => [index];
 }
+
+class SwitchMealTabLoading extends HomeState {
+  const SwitchMealTabLoading();
+}
+
+class SwitchMealTabSuccess extends HomeState {
+  final List<Product> products;
+
+  const SwitchMealTabSuccess({required this.products});
+}
+
+class SwitchMealTabError extends HomeState {
+  final String message;
+
+  const SwitchMealTabError({required this.message});
+}

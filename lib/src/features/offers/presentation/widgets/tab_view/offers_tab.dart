@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:inaeats/src/core/constants/app_assets.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/widgets/tabbar/app_tabbar.dart';
+import 'package:inaeats/src/features/offers/domain/entities/offers_category.dart';
 import 'package:inaeats/src/features/offers/presentation/widgets/tab_view/offers_tab_view.dart';
 
 class OffersTab extends StatefulWidget {
@@ -13,11 +15,11 @@ class OffersTab extends StatefulWidget {
 class _OffersTabState extends State<OffersTab> with TickerProviderStateMixin {
   late final TabController _tabController;
 
-  final List<String> _offers = [
-    AppStrings.trending,
-    AppStrings.promo,
-    AppStrings.valueMon,
-    AppStrings.discounts,
+  final List<OfferCategory> _offers = [
+    OfferCategory(title: AppStrings.trending, images: AppImages.promos),
+    OfferCategory(title: AppStrings.promo, images: AppImages.spotlight),
+    OfferCategory(title: AppStrings.valueMon, images: AppImages.valueForMoney),
+    OfferCategory(title: AppStrings.discounts, images: AppImages.discount),
   ];
 
   @override
@@ -40,6 +42,8 @@ class _OffersTabState extends State<OffersTab> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final currentIndex = _tabController.index.clamp(0, _offers.length - 1);
+    final OfferCategory currentOffer = _offers[currentIndex];
+
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: Column(
@@ -47,16 +51,18 @@ class _OffersTabState extends State<OffersTab> with TickerProviderStateMixin {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 6.0),
-            child: AppTabbar(tabController: _tabController, tabs: _offers),
+            child: AppTabbar(
+              tabController: _tabController,
+              tabs: _offers.map((e) => e.title).toList(),
+            ),
           ),
           const SizedBox(height: 12),
-          AnimatedSwitcher(
-            duration: const Duration(milliseconds: 300),
-            transitionBuilder:
-                (child, animation) => FadeTransition(opacity: animation, child: child),
-            child: OffersTabView(
-              key: ValueKey(currentIndex),
-              offers: _offers[_tabController.index],
+          Expanded(
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              transitionBuilder:
+                  (child, animation) => FadeTransition(opacity: animation, child: child),
+              child: OffersTabView(key: ValueKey(currentIndex), offers: currentOffer.images),
             ),
           ),
         ],

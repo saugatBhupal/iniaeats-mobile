@@ -10,29 +10,16 @@ import 'package:inaeats/src/features/categories/presentation/widgets/category_ic
 class HomeCategories extends StatelessWidget {
   const HomeCategories({super.key});
 
-  // static final List<ProductCategory> _categories =
-  //     [
-  //       [AppStrings.drinks, AppImages.drinks],
-  //       [AppStrings.readyEat, AppImages.readyEat],
-  //       [AppStrings.quickbites, AppImages.quickbites],
-  //       [AppStrings.gourmet, AppImages.gourmet],
-  //       [AppStrings.fruits, AppImages.fruits],
-  //       [AppStrings.vegan, AppImages.vegan],
-  //     ].map((item) => ProductCategory(label: item[0], image: item[1])).toList();
-  static const List<ProductCategory> _categories = [
-    // ProductCategory(label: AppStrings.drinks, image: AppImages.drinks),
-    // ProductCategory(label: AppStrings.readyEat, image: AppImages.readyEat),
-    // ProductCategory(label: AppStrings.quickbites, image: AppImages.quickbites),
-    // ProductCategory(label: AppStrings.gourmet, image: AppImages.gourmet),
-    // ProductCategory(label: AppStrings.fruits, image: AppImages.fruits),
-    // ProductCategory(label: AppStrings.vegan, image: AppImages.vegan),
-    // ProductCategory(label: AppStrings.drinks, image: AppImages.drinks),
-    // ProductCategory(label: AppStrings.chinese, image: AppImages.readyEat),
-    // ProductCategory(label: AppStrings.quickbites, image: AppImages.quickbites),
-    // ProductCategory(label: AppStrings.gourmet, image: AppImages.gourmet),
-    // ProductCategory(label: AppStrings.fruits, image: AppImages.fruits),
-    // ProductCategory(label: AppStrings.vegan, image: AppImages.vegan),
-  ];
+  static final List<ProductCategory> _categories =
+      [
+        [AppStrings.drinks, AppImages.drinks],
+        [AppStrings.readyEat, AppImages.readyEat],
+        [AppStrings.quickbites, AppImages.quickbites],
+        [AppStrings.gourmet, AppImages.gourmet],
+        [AppStrings.fruits, AppImages.fruits],
+        [AppStrings.vegan, AppImages.vegan],
+      ].map((item) => ProductCategory.initial().copyWith(name: item[0], image: item[1])).toList();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -79,7 +66,7 @@ class HomeCategories extends StatelessWidget {
                   final item = _categories[index];
                   return Padding(
                     padding: const EdgeInsets.only(left: 16.0),
-                    child: CategoryIcon(label: "item.label", image: item.image),
+                    child: CategoryIcon(label: item.name, image: item.image),
                   );
                 },
                 separatorBuilder: (context, index) => const SizedBox(width: 8),

@@ -5,7 +5,8 @@ import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
 
 class PriceBadge extends StatelessWidget {
-  const PriceBadge({super.key});
+  final int? price;
+  const PriceBadge({super.key, this.price});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class PriceBadge extends StatelessWidget {
               style: context.bodySmall.copyWith(color: AppColors.white),
             ),
             TextSpan(
-              text: "299",
+              text: price.toString(),
               style: context.bodyLarge.copyWith(
                 fontWeight: FontThickness.medium,
                 color: AppColors.white,

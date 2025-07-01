@@ -14,17 +14,14 @@ class BulletTextspan extends StatelessWidget {
         Container(
           height: 6,
           width: 6,
-          decoration: BoxDecoration(
-            color: AppColors.frog,
-            shape: BoxShape.circle,
-          ),
+          decoration: BoxDecoration(color: AppColors.frog, shape: BoxShape.circle),
         ),
         SizedBox(width: 4),
         Text(
           label,
-          style: context.bodySmall.copyWith(
-            color: AppColors.black.withValues(alpha: 0.45),
-          ),
+          maxLines: 1,
+          overflow: TextOverflow.visible,
+          style: context.bodySmall.copyWith(color: AppColors.black.withValues(alpha: 0.45)),
         ),
       ],
     );

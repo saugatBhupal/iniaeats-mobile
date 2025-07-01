@@ -43,7 +43,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/gifs/
-    - assets/data/
+    - assets/data/product.data
 
   fonts:
     - family: AlbertSans

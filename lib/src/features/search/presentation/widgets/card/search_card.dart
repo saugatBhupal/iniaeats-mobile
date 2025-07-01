@@ -40,7 +40,7 @@ class SearchCard extends StatelessWidget {
               children: [
                 Text("Olio Spaghetti Kit", style: context.titleMedium),
                 SizedBox(width: 6),
-                const FoodMarkSymbol(foodMark: FoodMark.veg),
+                const FoodMarkSymbol(dietType: DietType.nonvegetarian),
                 const Spacer(),
                 const RatingsSymbol(),
               ],
@@ -52,7 +52,7 @@ class SearchCard extends StatelessWidget {
             padding: const EdgeInsets.only(left: 8.0),
             child: Row(
               children: [
-                TimerTextspan(),
+                TimerTextspan(duration: 23),
                 _gap,
                 BulletTextspan(label: "320 Kcal"),
                 _gap,

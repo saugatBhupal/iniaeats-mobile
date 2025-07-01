@@ -63,7 +63,11 @@ class MealDetailsImage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 12),
-                    const FoodMarkSymbol(foodMark: FoodMark.veg, padding: 6, circleSize: 8),
+                    const FoodMarkSymbol(
+                      dietType: DietType.nonvegetarian,
+                      padding: 6,
+                      circleSize: 8,
+                    ),
                   ],
                 ),
                 const SizedBox(height: 8),

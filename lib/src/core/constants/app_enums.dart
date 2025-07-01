@@ -11,3 +11,7 @@ enum UserType { admin, user, delivery }
 enum Role { admin, user, delivery, none }
 
 enum DietType { vegetarian, nonvegetarian, vegan }
+
+enum Difficulty { easy, medium, hard }
+
+enum NotificationType { ordersuccess, ordercancelled, newcoupon, newservice }
