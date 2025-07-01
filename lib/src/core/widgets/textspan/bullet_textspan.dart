@@ -18,7 +18,7 @@ class BulletTextspan extends StatelessWidget {
         ),
         SizedBox(width: 4),
         Text(
-          label,
+          label[0].toUpperCase() + label.substring(1),
           maxLines: 1,
           overflow: TextOverflow.visible,
           style: context.bodySmall.copyWith(color: AppColors.black.withValues(alpha: 0.45)),

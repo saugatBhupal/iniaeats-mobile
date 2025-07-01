@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inaeats/src/config/app_routes/app_routes.dart';
 
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
@@ -12,18 +13,21 @@ class SearchChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        color: background ?? AppColors.doctor,
-        border: Border.all(color: border ?? AppColors.genie),
-        borderRadius: BorderRadius.circular(18.0),
-      ),
-      child: Text(
-        label,
-        style: context.bodySmall.copyWith(
-          color: border ?? AppColors.black.withValues(alpha: 0.45),
-          fontWeight: FontThickness.semiBold,
+    return GestureDetector(
+      onTap: () => Navigator.of(context).pushNamed(AppRoutes.searchResults, arguments: label),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        decoration: BoxDecoration(
+          color: background ?? AppColors.doctor,
+          border: Border.all(color: border ?? AppColors.genie),
+          borderRadius: BorderRadius.circular(18.0),
+        ),
+        child: Text(
+          label,
+          style: context.bodySmall.copyWith(
+            color: border ?? AppColors.black.withValues(alpha: 0.45),
+            fontWeight: FontThickness.semiBold,
+          ),
         ),
       ),
     );

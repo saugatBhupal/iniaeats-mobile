@@ -4,7 +4,8 @@ import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/features/search/presentation/widgets/chip/search_chip.dart';
 
 class SearchItem extends StatelessWidget {
-  const SearchItem({super.key});
+  final String query;
+  const SearchItem({super.key, required this.query});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class SearchItem extends StatelessWidget {
             style: context.bodyLarge.copyWith(color: AppColors.black.withValues(alpha: 0.45)),
           ),
           SizedBox(width: 10),
-          SearchChip(label: "Spaghetti", border: AppColors.frog, background: AppColors.white),
+          SearchChip(label: query, border: AppColors.frog, background: AppColors.white),
         ],
       ),
     );

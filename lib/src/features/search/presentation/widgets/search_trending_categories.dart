@@ -8,14 +8,12 @@ import 'package:inaeats/src/features/categories/domain/entities/product_catergor
 import 'package:inaeats/src/features/categories/presentation/widgets/category_icon.dart';
 
 class SearchTrendingCategories extends StatelessWidget {
-  const SearchTrendingCategories({super.key});
+  SearchTrendingCategories({super.key});
 
-  static const List<ProductCategory> _categories = [
-    // ProductCategory(label: AppStrings.drinks, image: AppImages.drinks),
-    // ProductCategory(label: AppStrings.readyEat, image: AppImages.readyEat),
-    // ProductCategory(label: AppStrings.quickbites, image: AppImages.quickbites),
-    // ProductCategory(label: AppStrings.gourmet, image: AppImages.gourmet),
-    // ProductCategory(label: AppStrings.fruits, image: AppImages.fruits),
+  final List<ProductCategory> _categories = [
+    ProductCategory.initial().copyWith(name: AppStrings.gourmet, image: AppImages.gourmet),
+    ProductCategory.initial().copyWith(name: AppStrings.readyEat, image: AppImages.readyEat),
+    ProductCategory.initial().copyWith(name: AppStrings.quickbites, image: AppImages.quickbites),
   ];
 
   @override
@@ -43,10 +41,10 @@ class SearchTrendingCategories extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: _categories.length,
               itemBuilder: (context, index) {
-                final item = _categories[index];
+                final category = _categories[index];
                 return Padding(
                   padding: const EdgeInsets.only(left: 16.0),
-                  child: CategoryIcon(label: "item.label", image: item.image),
+                  child: CategoryIcon(label: category.name, image: category.image),
                 );
               },
               separatorBuilder: (context, index) => const SizedBox(width: 8),

@@ -22,7 +22,7 @@ class Product {
   final List<Tag> tags;
   // final List<String> images;
   // final List<Allergen> allergens;
-  // final List<ProductCategory> categories;
+  final List<ProductCategory> categories;
   // final String recipeVideo;
   // final bool requiresHeating;
   final int duration;
@@ -45,7 +45,7 @@ class Product {
     required this.tags,
     // required this.images,
     // required this.allergens,
-    // required this.categories,
+    required this.categories,
     // required this.recipeVideo,
     // required this.requiresHeating,
     required this.duration,
@@ -60,7 +60,7 @@ class Product {
     portion: 2,
     price: 200,
     dietType: DietType.nonvegetarian,
-    productType: '',
+    productType: 'Meal Kit',
     weight: 500,
     calories: 450,
     fats: 240,
@@ -69,7 +69,7 @@ class Product {
     tags: [],
     // images: [],
     // allergens: [],
-    // categories: [],
+    categories: [],
     // recipeVideo: '',
     // requiresHeating: false,
     duration: 0,
@@ -116,7 +116,7 @@ class Product {
       tags: tags ?? this.tags,
       // images: images ?? this.images,
       // allergens: allergens ?? this.allergens,
-      // categories: categories ?? this.categories,
+      categories: categories ?? this.categories,
       // recipeVideo: recipeVideo ?? this.recipeVideo,
       // requiresHeating: requiresHeating ?? this.requiresHeating,
       duration: duration ?? this.duration,
@@ -139,7 +139,13 @@ class Product {
     protein: json['protein'],
     carbs: json['carbs'],
     tags: (json['tags'] ?? []).map<Tag>((e) => Tag.initial().copyWith(name: e)).toList(),
-    // categories: List<ProductCategory>.from(json['categories'] ?? []),
+    categories:
+        (json['categories'] as List<dynamic>? ?? [])
+            .map(
+              (categoryName) => ProductCategory.initial().copyWith(name: categoryName.toString()),
+            )
+            .toList(),
+
     // recipeVideo: json['recipeVideo'],
     // requiresHeating: json['requiresHeating'],
     duration: json['duration'],

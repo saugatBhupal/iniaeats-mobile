@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inaeats/src/config/app_routes/app_routes.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
@@ -7,7 +8,8 @@ import 'package:inaeats/src/core/widgets/buttons/back_button.dart';
 import 'package:inaeats/src/core/widgets/input/search_textfield.dart';
 
 class SearchAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const SearchAppbar({super.key});
+  final Function(String)? onSubmitted;
+  const SearchAppbar({super.key, required this.onSubmitted});
   @override
   Size get preferredSize => const Size.fromHeight(120);
   @override
@@ -30,7 +32,7 @@ class SearchAppbar extends StatelessWidget implements PreferredSizeWidget {
               ],
             ),
             const SizedBox(height: 18),
-            SearchTextField(),
+            SearchTextField(onSubmitted: onSubmitted),
           ],
         ),
       ),

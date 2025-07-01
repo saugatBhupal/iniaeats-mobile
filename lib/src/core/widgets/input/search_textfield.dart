@@ -5,19 +5,40 @@ import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
 
-class SearchTextField extends StatelessWidget {
+class SearchTextField extends StatefulWidget {
   final Function()? onTap;
-  SearchTextField({super.key, this.onTap});
+  final ValueChanged<String>? onSubmitted;
+  const SearchTextField({super.key, this.onTap, this.onSubmitted});
 
+  @override
+  State<SearchTextField> createState() => _SearchTextFieldState();
+}
+
+class _SearchTextFieldState extends State<SearchTextField> {
   final FocusNode _focusNode = FocusNode();
+  late final TextEditingController _searchController;
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 40,
       child: SearchBar(
         textInputAction: TextInputAction.search,
+        controller: _searchController,
         hintText: AppStrings.searchPH,
-        onTap: onTap,
+        onTap: widget.onTap,
+        onSubmitted: widget.onSubmitted,
         onTapOutside: (event) {
           _focusNode.unfocus();
         },

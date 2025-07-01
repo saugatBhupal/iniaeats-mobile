@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:inaeats/src/core/constants/app_strings.dart';
-import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/core/widgets/buttons/quantity_stepper_button.dart';
 import 'package:inaeats/src/features/products/presentation/widgets/add_to_cart_button.dart';
 import 'package:inaeats/src/features/products/presentation/widgets/meal_details_image.dart';
 import 'package:inaeats/src/features/products/presentation/widgets/meal_details_tabbar.dart';
-import 'package:inaeats/src/features/products/presentation/widgets/tabview/details_tabview.dart';
-import 'package:inaeats/src/features/products/presentation/widgets/tabview/ingredients_tabview.dart';
 
 class MealDetailsScreen extends StatefulWidget {
   const MealDetailsScreen({super.key});

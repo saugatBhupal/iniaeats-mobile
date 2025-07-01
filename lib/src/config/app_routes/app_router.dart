@@ -20,6 +20,7 @@ import 'package:inaeats/src/features/orders/presentation/screens/all_orders_scre
 import 'package:inaeats/src/features/orders/presentation/screens/order_screen.dart';
 import 'package:inaeats/src/features/orders/presentation/screens/track_orders_screen.dart';
 import 'package:inaeats/src/features/recipe/presentation/screens/recipe_screen.dart';
+import 'package:inaeats/src/features/search/presentation/bloc/search_bloc.dart';
 import 'package:inaeats/src/features/search/presentation/screens/search_results_screen.dart';
 import 'package:inaeats/src/features/search/presentation/screens/search_screen.dart';
 import 'package:inaeats/src/features/splash/presentation/bloc/splash_bloc.dart';
@@ -57,7 +58,7 @@ class AppRouter {
                   BlocProvider(create: (context) => sl<HomeBloc>(), child: const HomeScreen()),
         );
       case AppRoutes.categories:
-        return MaterialPageRoute(builder: (context) => const CategoriesScreen());
+        return MaterialPageRoute(builder: (context) => CategoriesScreen());
       case AppRoutes.offers:
         return MaterialPageRoute(builder: (context) => const OffersScreen());
       case AppRoutes.notifications:
@@ -71,9 +72,21 @@ class AppRouter {
       case AppRoutes.customerService:
         return MaterialPageRoute(builder: (context) => const CustomerServiceScreen());
       case AppRoutes.search:
-        return MaterialPageRoute(builder: (context) => const SearchScreen());
+        return MaterialPageRoute(
+          builder:
+              (context) => BlocProvider(
+                create: (_) => sl<SearchBloc>()..add(GetRecommendedProducts()),
+                child: const SearchScreen(),
+              ),
+        );
       case AppRoutes.searchResults:
-        return MaterialPageRoute(builder: (context) => const SearchResultsScreen());
+        return MaterialPageRoute(
+          builder:
+              (context) => BlocProvider(
+                create: (context) => sl<SearchBloc>(),
+                child: SearchResultsScreen(query: settings.arguments as String),
+              ),
+        );
       case AppRoutes.cart:
         return MaterialPageRoute(builder: (context) => const CartScreen());
       case AppRoutes.coupons:

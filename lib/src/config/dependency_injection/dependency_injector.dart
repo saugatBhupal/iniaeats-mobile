@@ -6,6 +6,7 @@ import 'package:inaeats/src/core/network/http_service.dart';
 import 'package:inaeats/src/features/authentication/authentication_injector.dart';
 import 'package:inaeats/src/features/home/home_injector.dart';
 import 'package:inaeats/src/features/notifications/notification_injector.dart';
+import 'package:inaeats/src/features/search/search_injector.dart';
 import 'package:inaeats/src/features/splash/splash_injector.dart';
 
 final sl = GetIt.instance;
@@ -15,6 +16,7 @@ Future<void> initDependencies() async {
   initSplash();
   initAuthentication();
   initHome();
+  initSearch();
   initNotification();
 }
 

@@ -13,19 +13,35 @@ class CustomerServiceScreen extends StatefulWidget {
 
 class _CustomerServiceScreenState extends State<CustomerServiceScreen> {
   late final TextEditingController _textController;
-  static const List<Map<String, String>> _messages = [
-    {'type': 'received', 'text': "Hello, this is customer service......", 'time': "an hour ago"},
-    {
-      'type': 'sent',
-      'text': "Hello, I am your patient, I am very sick call....",
-      'time': "just now",
-    },
-  ];
+
+  // Make _messages mutable
+  final List<Map<String, String>> _messages = [];
 
   @override
   void initState() {
     super.initState();
     _textController = TextEditingController();
+
+    _messages.add({'type': 'received', 'text': "Hello, this is customer service......"});
+  }
+
+  void _handleSendMessage(String text) {
+    if (text.trim().isEmpty) return;
+
+    setState(() {
+      _messages.add({'type': 'sent', 'text': text});
+
+      _textController.clear();
+    });
+
+    Future.delayed(const Duration(seconds: 1, milliseconds: 500), () {
+      setState(() {
+        _messages.add({
+          'type': 'received',
+          'text': "We will contact you soon. Thank you for reaching out!",
+        });
+      });
+    });
   }
 
   @override
@@ -47,14 +63,14 @@ class _CustomerServiceScreenState extends State<CustomerServiceScreen> {
               itemBuilder: (context, index) {
                 final msg = _messages[index];
                 if (msg['type'] == 'sent') {
-                  return SentTile(message: msg['text']!, sent: msg['time']!);
+                  return SentTile(message: msg['text']!, sent: 'just now');
                 } else {
-                  return ReceivedTile(message: msg['text']!, sent: msg['time']!);
+                  return ReceivedTile(message: msg['text']!, sent: 'just now');
                 }
               },
             ),
           ),
-          MessageTextField(controller: _textController, onSend: (text) {}),
+          MessageTextField(controller: _textController, onSend: _handleSendMessage),
         ],
       ),
     );

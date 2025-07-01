@@ -15,10 +15,11 @@ class MessageTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 14),
       child: TextFormField(
+        onFieldSubmitted: onSend,
         controller: controller,
         keyboardType: TextInputType.text,
         cursorColor: AppColors.black,
-        style: context.titleSmall.copyWith(fontSize: 15, color: AppColors.genie, height: 2),
+        style: context.titleSmall.copyWith(color: AppColors.black.withValues(alpha: 0.6)),
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 26),
           filled: true,
@@ -28,6 +29,7 @@ class MessageTextField extends StatelessWidget {
             color: Color(0xFFB1B1B1),
             fontWeight: FontThickness.semiBold,
           ),
+
           suffixIcon: GestureDetector(
             onTap: () {
               if (onSend != null) {

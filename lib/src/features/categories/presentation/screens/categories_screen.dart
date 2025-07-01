@@ -2,32 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/constants/app_assets.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
+import 'package:inaeats/src/core/widgets/appbar/TitleAppbar.dart';
 import 'package:inaeats/src/core/widgets/backgroud/gradient_background.dart';
 import 'package:inaeats/src/features/categories/domain/entities/product_catergory.dart';
-import 'package:inaeats/src/features/categories/presentation/widgets/categories_appbar.dart';
 import 'package:inaeats/src/features/categories/presentation/widgets/category_icon.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
-  static const List<ProductCategory> _categories = [
-    // ProductCategory(label: AppStrings.drinks, image: AppImages.drinks),
-    // ProductCategory(label: AppStrings.readyEat, image: AppImages.readyEat),
-    // ProductCategory(label: AppStrings.quickbites, image: AppImages.quickbites),
-    // ProductCategory(label: AppStrings.gourmet, image: AppImages.gourmet),
-    // ProductCategory(label: AppStrings.fruits, image: AppImages.fruits),
-    // ProductCategory(label: AppStrings.vegan, image: AppImages.vegan),
-    // ProductCategory(label: AppStrings.drinks, image: AppImages.drinks),
-    // ProductCategory(label: AppStrings.chinese, image: AppImages.readyEat),
-    // ProductCategory(label: AppStrings.quickbites, image: AppImages.quickbites),
-    // ProductCategory(label: AppStrings.gourmet, image: AppImages.gourmet),
-    // ProductCategory(label: AppStrings.fruits, image: AppImages.fruits),
-    // ProductCategory(label: AppStrings.vegan, image: AppImages.vegan),
+  CategoriesScreen({super.key});
+  final List<ProductCategory> _categories = [
+    ProductCategory.initial().copyWith(name: AppStrings.drinks, image: AppImages.drinks),
+    ProductCategory.initial().copyWith(name: AppStrings.readyEat, image: AppImages.readyEat),
+    ProductCategory.initial().copyWith(name: AppStrings.quickbites, image: AppImages.quickbites),
+    ProductCategory.initial().copyWith(name: AppStrings.gourmet, image: AppImages.gourmet),
+    ProductCategory.initial().copyWith(name: AppStrings.fruits, image: AppImages.fruits),
+    ProductCategory.initial().copyWith(name: AppStrings.vegan, image: AppImages.vegan),
+    ProductCategory.initial().copyWith(name: AppStrings.drinks, image: AppImages.drinks),
+    ProductCategory.initial().copyWith(name: AppStrings.chinese, image: AppImages.readyEat),
+    ProductCategory.initial().copyWith(name: AppStrings.quickbites, image: AppImages.quickbites),
+    ProductCategory.initial().copyWith(name: AppStrings.gourmet, image: AppImages.gourmet),
+    ProductCategory.initial().copyWith(name: AppStrings.fruits, image: AppImages.fruits),
+    ProductCategory.initial().copyWith(name: AppStrings.vegan, image: AppImages.vegan),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CategoriesAppbar(),
+      appBar: TitleAppBar(title: AppStrings.moreCat),
       body: GradientBackground(
         child: SizedBox(
           height: context.height,
@@ -43,8 +43,8 @@ class CategoriesScreen extends StatelessWidget {
                 childAspectRatio: 0.95,
               ),
               itemBuilder: (context, index) {
-                final item = _categories[index];
-                return CategoryIcon(label: " item.label", image: item.image);
+                final category = _categories[index];
+                return CategoryIcon(label: category.name, image: category.image);
               },
             ),
           ),
