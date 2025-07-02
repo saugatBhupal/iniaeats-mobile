@@ -51,7 +51,12 @@ class AppIcons {
   static const String cart = "$_iconsPath/cart.svg";
   static const String search = "$_iconsPath/search.svg";
   static const String rating = "$_iconsPath/rating.svg";
+  static const String star = "$_iconsPath/review-star.svg";
   static const String timer = "$_iconsPath/timer.svg";
+  static const String bento = "$_iconsPath/bento.png";
+  static const String pax = "$_iconsPath/pax.png";
+  static const String difficulty = "$_iconsPath/difficulty.png";
+  static const String kcal = "$_iconsPath/kcal.png";
   static const String send = "$_iconsPath/send.svg";
   static const String filter = "$_iconsPath/filter.svg";
   static const String coupon = "$_iconsPath/coupon.png";

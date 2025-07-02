@@ -14,7 +14,16 @@ class RequirementsContainer extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 14),
           child: IconTitle(label: AppStrings.requirements, fontSize: 14),
         ),
-        TagsContainer(),
+        TagsContainer(
+          tags: [
+            "Boiling Pot",
+            "Frying Pan",
+            "Running Water",
+            "Cooking Spoons",
+            "Chopping Board",
+            "Knives",
+          ],
+        ),
       ],
     );
   }

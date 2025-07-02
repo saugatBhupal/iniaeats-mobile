@@ -57,7 +57,7 @@ class CartItemCard extends StatelessWidget {
           ),
         ),
         SizedBox(width: 8),
-        QuantityStepperButton(initialPortion: 1),
+        // QuantityStepperButton(initialPortion: 1),
       ],
     );
   }

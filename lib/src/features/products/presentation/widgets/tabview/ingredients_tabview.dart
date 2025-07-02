@@ -5,7 +5,8 @@ import 'package:inaeats/src/features/recipe/presentation/widgets/components/reci
 
 class IngredientsTabview extends StatelessWidget {
   final ScrollController? scrollController;
-  const IngredientsTabview({Key? key, this.scrollController}) : super(key: key);
+  final int shelfLife;
+  const IngredientsTabview({super.key, this.scrollController, required this.shelfLife});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,10 @@ class IngredientsTabview extends StatelessWidget {
           _gap,
           Align(
             alignment: Alignment.centerLeft,
-            child: InfoTextspan(info: AppStrings.storageInfo, margin: 0),
+            child: InfoTextspan(
+              info: "Best consumed within $shelfLife days of purchase.",
+              margin: 0,
+            ),
           ),
           const SizedBox(height: 120),
         ],

@@ -17,7 +17,7 @@ class SearchProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).pushNamed(AppRoutes.mealDetails),
+      onTap: () => Navigator.of(context).pushNamed(AppRoutes.mealDetails, arguments: product),
       child: Container(
         constraints: BoxConstraints(maxWidth: context.width * 0.8),
         child: Column(

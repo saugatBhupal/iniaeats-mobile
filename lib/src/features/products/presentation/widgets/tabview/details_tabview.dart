@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
-import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/core/widgets/textspan/info_textspan.dart';
+import 'package:inaeats/src/features/products/domain/entities/product.dart';
 import 'package:inaeats/src/features/products/presentation/widgets/allergens_container.dart';
 import 'package:inaeats/src/features/products/presentation/widgets/nutrients_container.dart';
 import 'package:inaeats/src/features/products/presentation/widgets/requirements_container.dart';
@@ -10,7 +10,8 @@ import 'package:inaeats/src/features/products/presentation/widgets/tags_containe
 
 class DetailsTabview extends StatelessWidget {
   final ScrollController? scrollController;
-  const DetailsTabview({Key? key, this.scrollController}) : super(key: key);
+  final Product product;
+  const DetailsTabview({super.key, this.scrollController, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +19,16 @@ class DetailsTabview extends StatelessWidget {
       controller: scrollController,
       padding: const EdgeInsets.symmetric(vertical: 16),
       children: [
-        TagsContainer(),
+        TagsContainer(tags: product.tags.map((tag) => tag.name).toList()),
         const CenterDivider(),
-        NutrientsContainer(),
+        NutrientsContainer(
+          protein: product.protein,
+          weight: product.weight,
+          fats: product.fats,
+          carbs: product.carbs,
+        ),
         const CenterDivider(),
-        AllergensContainer(),
+        AllergensContainer(allergens: product.allergens),
         const CenterDivider(),
         RequirementsContainer(),
         const SizedBox(height: 16),
@@ -30,7 +36,9 @@ class DetailsTabview extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Align(
             alignment: Alignment.centerLeft,
-            child: InfoTextspan(info: AppStrings.storageInfo),
+            child: InfoTextspan(
+              info: "Best consumed within ${product.shelfLife} days of purchase.",
+            ),
           ),
         ),
 

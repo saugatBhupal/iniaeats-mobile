@@ -5,14 +5,16 @@ import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
 
 class AddToCartButton extends StatelessWidget {
+  final int totalPrice;
   final Function()? onPressed;
-  const AddToCartButton({super.key, this.onPressed});
+
+  const AddToCartButton({super.key, required this.totalPrice, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: context.width / 2,
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       color: AppColors.white,
       child: Material(
         child: InkWell(
@@ -20,7 +22,7 @@ class AddToCartButton extends StatelessWidget {
           splashColor: AppColors.mint,
           borderRadius: BorderRadius.circular(24),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
             decoration: BoxDecoration(
               color: AppColors.green,
               borderRadius: BorderRadius.circular(24),
@@ -36,7 +38,7 @@ class AddToCartButton extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "${AppStrings.rupee}200.00",
+                  "${AppStrings.rupee}${totalPrice.toStringAsFixed(2)}",
                   style: context.bodyLarge.copyWith(color: AppColors.white),
                 ),
               ],

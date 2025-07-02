@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:inaeats/src/core/widgets/buttons/quantity_stepper_button.dart';
+import 'package:inaeats/src/features/products/domain/entities/product.dart';
+import 'package:inaeats/src/features/products/presentation/widgets/add_cart_section.dart';
 import 'package:inaeats/src/features/products/presentation/widgets/add_to_cart_button.dart';
 import 'package:inaeats/src/features/products/presentation/widgets/meal_details_image.dart';
 import 'package:inaeats/src/features/products/presentation/widgets/meal_details_tabbar.dart';
 
 class MealDetailsScreen extends StatefulWidget {
-  const MealDetailsScreen({super.key});
+  final Product product;
+  const MealDetailsScreen({super.key, required this.product});
 
   @override
   State<MealDetailsScreen> createState() => _MealDetailsScreenState();
@@ -41,38 +44,18 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
               ValueListenableBuilder<double>(
                 valueListenable: offsetNotifier,
                 builder: (context, offset, child) {
-                  return MealDetailsImage(scrollOffset: offset);
+                  return MealDetailsImage(scrollOffset: offset, product: widget.product);
                 },
               ),
-              Expanded(child: MealDetailsTabbar(scrollController: _scrollController)),
+              Expanded(
+                child: MealDetailsTabbar(
+                  scrollController: _scrollController,
+                  product: widget.product,
+                ),
+              ),
             ],
           ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Container(
-              decoration: BoxDecoration(
-                color: const Color(0xFFFAFFF8),
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(18),
-                  topRight: Radius.circular(18),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.16),
-                    offset: const Offset(1, 1),
-                    blurRadius: 20,
-                  ),
-                ],
-              ),
-              padding: const EdgeInsets.fromLTRB(30, 6, 30, 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [QuantityStepperButton(initialPortion: 1), AddToCartButton()],
-              ),
-            ),
-          ),
+          AddCartSection(price: widget.product.price),
         ],
       ),
     );

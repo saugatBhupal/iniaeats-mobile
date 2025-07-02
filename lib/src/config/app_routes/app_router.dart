@@ -13,6 +13,7 @@ import 'package:inaeats/src/features/customer_service/presentation/screens/custo
 import 'package:inaeats/src/features/home/presentation/bloc/home_bloc.dart';
 import 'package:inaeats/src/features/home/presentation/screens/home_screen.dart';
 import 'package:inaeats/src/features/notifications/presentation/bloc/app_notification_bloc.dart';
+import 'package:inaeats/src/features/products/domain/entities/product.dart';
 import 'package:inaeats/src/features/products/presentation/screens/meal_details_screen.dart';
 import 'package:inaeats/src/features/notifications/presentation/screens/notification_screen.dart';
 import 'package:inaeats/src/features/offers/presentation/screens/offers_screen.dart';
@@ -94,7 +95,9 @@ class AppRouter {
       case AppRoutes.recipe:
         return MaterialPageRoute(builder: (context) => const RecipeScreen());
       case AppRoutes.mealDetails:
-        return MaterialPageRoute(builder: (context) => MealDetailsScreen());
+        return MaterialPageRoute(
+          builder: (context) => MealDetailsScreen(product: settings.arguments as Product),
+        );
       case AppRoutes.allOrders:
         return MaterialPageRoute(builder: (context) => AllOrdersScreen());
       case AppRoutes.orders:

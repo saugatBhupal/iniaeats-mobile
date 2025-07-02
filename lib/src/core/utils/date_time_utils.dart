@@ -17,7 +17,7 @@ Duration getTimeLeft(String expiryTimeString) {
   return difference.isNegative ? Duration.zero : difference;
 }
 
-String formatCustomDate(DateTime dateTime) {
+String getCustomMonth(int month) {
   const customMonths = {
     1: 'Jan',
     2: 'Feb',
@@ -33,10 +33,21 @@ String formatCustomDate(DateTime dateTime) {
     12: 'Dec',
   };
 
+  return customMonths[month] ?? '';
+}
+
+String formatCustomDateTime(DateTime dateTime) {
   final day = DateFormat('d').format(dateTime);
-  final month = customMonths[dateTime.month] ?? DateFormat('MMM').format(dateTime);
+  final month = getCustomMonth(dateTime.month);
   final year = DateFormat('y').format(dateTime);
   final time = DateFormat('HH:mm').format(dateTime);
 
   return "$day $month $year | $time PM";
+}
+
+String formatCustomDate(DateTime dateTime) {
+  final day = DateFormat('d').format(dateTime); // e.g., '11'
+  final month = getCustomMonth(dateTime.month); // e.g., 'Jan'
+
+  return "$month $day"; // e.g., 'Jan 11'
 }

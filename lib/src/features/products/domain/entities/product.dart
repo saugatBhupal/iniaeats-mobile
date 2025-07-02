@@ -21,12 +21,12 @@ class Product {
   final int carbs;
   final List<Tag> tags;
   // final List<String> images;
-  // final List<Allergen> allergens;
+  final List<Allergen> allergens;
   final List<ProductCategory> categories;
   // final String recipeVideo;
   // final bool requiresHeating;
   final int duration;
-  // final Difficulty difficulty;
+  final Difficulty difficulty;
 
   Product({
     required this.id,
@@ -44,12 +44,12 @@ class Product {
     required this.carbs,
     required this.tags,
     // required this.images,
-    // required this.allergens,
+    required this.allergens,
     required this.categories,
     // required this.recipeVideo,
     // required this.requiresHeating,
     required this.duration,
-    // required this.difficulty,
+    required this.difficulty,
   });
 
   factory Product.initial() => Product(
@@ -68,12 +68,12 @@ class Product {
     carbs: 400,
     tags: [],
     // images: [],
-    // allergens: [],
+    allergens: [],
     categories: [],
     // recipeVideo: '',
     // requiresHeating: false,
     duration: 0,
-    // difficulty: Difficulty.easy,
+    difficulty: Difficulty.easy,
   );
 
   Product copyWith({
@@ -115,12 +115,12 @@ class Product {
       carbs: carbs ?? this.carbs,
       tags: tags ?? this.tags,
       // images: images ?? this.images,
-      // allergens: allergens ?? this.allergens,
+      allergens: allergens ?? this.allergens,
       categories: categories ?? this.categories,
       // recipeVideo: recipeVideo ?? this.recipeVideo,
       // requiresHeating: requiresHeating ?? this.requiresHeating,
       duration: duration ?? this.duration,
-      // difficulty: difficulty ?? this.difficulty,
+      difficulty: difficulty ?? this.difficulty,
     );
   }
 
@@ -149,14 +149,11 @@ class Product {
     // recipeVideo: json['recipeVideo'],
     // requiresHeating: json['requiresHeating'],
     duration: json['duration'],
-    // difficulty: Difficulty.values.firstWhere(
-    //   (e) => e.name.toUpperCase() == json['difficulty'].toString().toUpperCase(),
-    //   orElse: () => Difficulty.easy,
-    // ),
+    difficulty: DifficultyExtension.fromDatabaseValue(json['difficulty'].toString()),
     // images: List<String>.from(json['images'] ?? []),
-    // allergens:
-    //     (json['allergens'] ?? [])
-    //         .map((allergen) => Allergen.initial().copyWith(name: allergen.toString()))
-    //         .toList(),
+    allergens:
+        (json['allergens'] as List<dynamic>? ?? [])
+            .map((allergen) => Allergen.initial().copyWith(name: allergen.toString()))
+            .toList(),
   );
 }

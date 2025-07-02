@@ -3,13 +3,17 @@ import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
+import 'package:inaeats/src/features/products/domain/entities/product.dart';
 import 'package:inaeats/src/features/products/presentation/widgets/tabview/details_tabview.dart';
 import 'package:inaeats/src/features/products/presentation/widgets/tabview/ingredients_tabview.dart';
+import 'package:inaeats/src/features/products/presentation/widgets/tabview/review_tabview.dart';
 
 class MealDetailsTabbar extends StatelessWidget {
+  final Product product;
   final ScrollController scrollController;
 
-  const MealDetailsTabbar({Key? key, required this.scrollController}) : super(key: key);
+  const MealDetailsTabbar({Key? key, required this.scrollController, required this.product})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +52,12 @@ class MealDetailsTabbar extends StatelessWidget {
           Expanded(
             child: TabBarView(
               children: [
-                IngredientsTabview(scrollController: scrollController),
-                DetailsTabview(scrollController: scrollController),
-                Container(child: Text(AppStrings.reviews)),
+                IngredientsTabview(
+                  scrollController: scrollController,
+                  shelfLife: product.shelfLife,
+                ),
+                DetailsTabview(scrollController: scrollController, product: product),
+                ReviewTabview(scrollController: scrollController),
               ],
             ),
           ),

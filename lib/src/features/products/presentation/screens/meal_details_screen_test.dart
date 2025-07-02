@@ -133,9 +133,9 @@ class _MealDetailsScreenTestState extends State<MealDetailsScreenTest>
           body: TabBarView(
             controller: _tabController,
             children: [
-              IngredientsTabview(scrollController: _tabScrollControllers[0]),
-              DetailsTabview(scrollController: _tabScrollControllers[1]),
-              DetailsTabview(scrollController: _tabScrollControllers[2]),
+              // IngredientsTabview(scrollController: _tabScrollControllers[0]),
+              // DetailsTabview(scrollController: _tabScrollControllers[1]),
+              // DetailsTabview(scrollController: _tabScrollControllers[2]),
             ],
           ),
         ),

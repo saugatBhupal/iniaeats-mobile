@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inaeats/src/config/app_routes/app_routes.dart';
 import 'package:inaeats/src/core/constants/app_assets.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_enums.dart';
@@ -8,11 +9,14 @@ import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/core/widgets/buttons/back_button.dart';
 import 'package:inaeats/src/core/widgets/buttons/icon_button.dart';
 import 'package:inaeats/src/core/widgets/symbols/food_mark_symbol.dart';
+import 'package:inaeats/src/features/products/domain/entities/product.dart';
+import 'package:inaeats/src/features/products/presentation/widgets/textspan/meal_detail_icon_row.dart';
 import 'package:inaeats/src/features/products/presentation/widgets/textspan/meal_details_icon_textspan.dart';
 
 class MealDetailsImage extends StatelessWidget {
+  final Product product;
   final double scrollOffset;
-  const MealDetailsImage({super.key, required this.scrollOffset});
+  const MealDetailsImage({super.key, required this.scrollOffset, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +38,14 @@ class MealDetailsImage extends StatelessWidget {
             right: 16,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 AppbarBackButton(),
                 Text(AppStrings.swipeDown, style: TextStyle(color: Colors.white70)),
-                CustomIconButton(icon: AppIcons.cart, count: 10),
+                CustomIconButton(
+                  icon: AppIcons.cart,
+                  count: 10,
+                  onTap: () => Navigator.of(context).pushNamed(AppRoutes.cart),
+                ),
               ],
             ),
           ),
@@ -53,7 +61,7 @@ class MealDetailsImage extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Text(
-                        "Vegan Olio Spaghetti Kit",
+                        product.productName,
                         style: context.headlineSmall.copyWith(
                           fontWeight: FontThickness.semiBold,
                           color: AppColors.white,
@@ -63,16 +71,12 @@ class MealDetailsImage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 12),
-                    const FoodMarkSymbol(
-                      dietType: DietType.nonvegetarian,
-                      padding: 6,
-                      circleSize: 8,
-                    ),
+                    FoodMarkSymbol(dietType: product.dietType, padding: 6, circleSize: 8),
                   ],
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  "Enjoy a delicious, plant-based twist on a classic Italian favorite with our Vegan Olio Spaghetti Kit. Packed with high-quality durum wheat spaghetti, cold-pressed extra virgin olive oil, garlic flakes, chili flakes, and a blend of savory herbs.",
+                  product.productDescription,
                   textAlign: TextAlign.justify,
                   style: context.bodySmall.copyWith(
                     color: AppColors.border,
@@ -81,18 +85,12 @@ class MealDetailsImage extends StatelessWidget {
                     height: 1.2,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0, bottom: 14),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      MealDetailsIconTextspan(icon: AppIcons.timer, label: "23 mins."),
-                      MealDetailsIconTextspan(icon: AppIcons.timer, label: "2 pax."),
-                      MealDetailsIconTextspan(icon: AppIcons.timer, label: "320"),
-                      MealDetailsIconTextspan(icon: AppIcons.timer, label: "Medium"),
-                      MealDetailsIconTextspan(icon: AppIcons.timer, label: "Kit"),
-                    ],
-                  ),
+                MealDetailIconRow(
+                  duration: product.duration,
+                  portion: product.portion,
+                  calories: product.calories,
+                  difficulty: product.difficulty.name,
+                  productType: product.productType,
                 ),
               ],
             ),

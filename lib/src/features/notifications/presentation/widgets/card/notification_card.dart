@@ -30,7 +30,7 @@ class NotificationCard extends StatelessWidget {
                   children: [
                     Text(notification.title, style: context.titleLarge.copyWith(fontSize: 20)),
                     Text(
-                      formatCustomDate(notification.dateTime),
+                      formatCustomDateTime(notification.dateTime),
                       style: context.bodyLarge.copyWith(
                         color: AppColors.black.withValues(alpha: 0.45),
                       ),

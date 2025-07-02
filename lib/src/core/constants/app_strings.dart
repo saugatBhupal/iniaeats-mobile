@@ -88,7 +88,6 @@ class AppStrings {
   static const String swipeDown = "Swipe down for recipe";
   static const String orderInfo = "You cannot update the cart after placing order";
   static const String recipeInfo = "Scroll down to read the full step-by-step recipe.";
-  static const String storageInfo = "Best consumed within 3 days of purchase.";
   static const String packInfo = "All the ingredients are freshly packed on order";
   static const String couponInfo = "Only one discount or promo can be used per order";
   static const String otpSentMessage = "A 6 digit OTP has been sent to your number";

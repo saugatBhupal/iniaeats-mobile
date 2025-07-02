@@ -97,3 +97,29 @@ extension NotificationIconExtension on NotificationType {
     }
   }
 }
+
+extension DifficultyExtension on Difficulty {
+  String toDatabaseValue() {
+    switch (this) {
+      case Difficulty.easy:
+        return "EASY";
+      case Difficulty.medium:
+        return "MEDIUM";
+      case Difficulty.hard:
+        return "HARD";
+    }
+  }
+
+  static Difficulty fromDatabaseValue(String value) {
+    switch (value) {
+      case "EASY":
+        return Difficulty.easy;
+      case "MEDIUM":
+        return Difficulty.medium;
+      case "HARD":
+        return Difficulty.hard;
+      default:
+        throw ArgumentError("Invalid status value: $value");
+    }
+  }
+}
