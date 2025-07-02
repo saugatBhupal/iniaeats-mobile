@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:inaeats/src/core/domain/entities/user.dart';
 import 'package:inaeats/src/core/error/failure.dart';
+import 'package:inaeats/src/features/products/domain/entities/product.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserSharedPref {

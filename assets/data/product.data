@@ -1,5 +1,6 @@
 [
   {
+    "productId": "1",
     "productType": "ReadyToEat",
     "productName": "Mediterranean Quinoa Bowl Kit",
     "productDescription": "Healthy Mediterranean-inspired quinoa bowl with roasted vegetables, feta cheese, and tahini dressing.",
@@ -25,6 +26,7 @@
     ]
   },
   {
+    "productId": "2",
     "productType": "Quickbites",
     "productName": "Spicy Chicken Wrap",
     "productDescription": "Juicy grilled chicken with spicy sauce wrapped in whole wheat tortilla.",
@@ -50,6 +52,7 @@
     ]
   },
   {
+    "productId": "3",
     "productType": "Vegan",
     "productName": "Tofu Stir-Fry Bowl",
     "productDescription": "Sautéed tofu and vegetables in sesame sauce served over brown rice.",
@@ -75,6 +78,7 @@
     ]
   },
   {
+    "productId": "4",
     "productType": "Gourmet",
     "productName": "Truffle Risotto Kit",
     "productDescription": "Creamy risotto infused with truffle oil and parmesan cheese.",
@@ -100,6 +104,7 @@
     ]
   },
   {
+    "productId": "5",
     "productType": "ReadyToEat",
     "productName": "Korean Bibimbap Bowl",
     "productDescription": "Spicy mixed rice bowl with sautéed vegetables and fried egg.",
@@ -125,6 +130,7 @@
     ]
   },
   {
+    "productId": "6",
     "productType": "QuickBite",
     "productName": "Paneer Tikka Roll",
     "productDescription": "Grilled paneer chunks with tandoori spices wrapped in soft paratha.",
@@ -150,6 +156,7 @@
     ]
   },
   {
+    "productId": "7",
     "productType": "HealthyBowl",
     "productName": "Avocado Chickpea Salad",
     "productDescription": "Fresh salad of avocado, chickpeas, cherry tomatoes and lemon dressing.",
@@ -175,6 +182,7 @@
     ]
   },
   {
+    "productId": "8",
     "productType": "Gourmet",
     "productName": "Mushroom Stroganoff",
     "productDescription": "Rich creamy mushroom sauce served over buttered noodles.",
@@ -200,6 +208,7 @@
     ]
   },
   {
+    "productId": "9",
     "productType": "ReadyToEat",
     "productName": "Grilled Salmon with Greens",
     "productDescription": "Perfectly grilled salmon served with sautéed greens and lemon butter.",
@@ -224,6 +233,7 @@
       "https://example.com/image2.jpg"]
   },
   {
+    "productId": "10",
     "productType": "Breakfast",
     "productName": "Overnight Oats with Berries",
     "productDescription": "Creamy overnight oats soaked in almond milk and topped with fresh berries.",

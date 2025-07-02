@@ -9,14 +9,16 @@ import 'package:inaeats/src/core/widgets/images/placeholder_image.dart';
 class CartItemCard extends StatelessWidget {
   final String name;
   final List<String> ingredients;
-  final String price;
+  final int price;
   final int portion;
+  final ValueChanged<int> onQuantityChanged;
   const CartItemCard({
     super.key,
     required this.name,
     required this.ingredients,
     required this.price,
     required this.portion,
+    required this.onQuantityChanged,
   });
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,12 @@ class CartItemCard extends StatelessWidget {
           ),
         ),
         SizedBox(width: 8),
-        // QuantityStepperButton(initialPortion: 1),
+        QuantityStepperButton(
+          initialPortion: portion,
+          onChanged: (int updatedValue) {
+            onQuantityChanged(updatedValue);
+          },
+        ),
       ],
     );
   }

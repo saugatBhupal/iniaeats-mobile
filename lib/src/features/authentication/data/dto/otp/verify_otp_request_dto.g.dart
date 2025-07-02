@@ -13,5 +13,8 @@ VerifyOtpRequestDto _$VerifyOtpRequestDtoFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$VerifyOtpRequestDtoToJson(
-  VerifyOtpRequestDto instance,
-) => <String, dynamic>{'phone': instance.phone, 'otp': instance.otp};
+        VerifyOtpRequestDto instance) =>
+    <String, dynamic>{
+      'phone': instance.phone,
+      'otp': instance.otp,
+    };

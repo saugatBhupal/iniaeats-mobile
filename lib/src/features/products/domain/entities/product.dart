@@ -125,7 +125,7 @@ class Product {
   }
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-    id: const Uuid().v4(),
+    id: json['productId'],
     productType: json['productType'],
     productName: json['productName'],
     productDescription: json['productDescription'],

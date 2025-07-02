@@ -6,6 +6,7 @@ import 'package:inaeats/src/config/dependency_injection/dependency_injector.dart
 import 'package:inaeats/src/core/constants/app_enums.dart';
 import 'package:inaeats/src/features/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:inaeats/src/features/authentication/presentation/screens/authentication_screen.dart';
+import 'package:inaeats/src/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:inaeats/src/features/cart/presentation/screens/cart_screen.dart';
 import 'package:inaeats/src/features/categories/presentation/screens/categories_screen.dart';
 import 'package:inaeats/src/features/coupons/presentation/screens/coupons_screen.dart';
@@ -89,14 +90,24 @@ class AppRouter {
               ),
         );
       case AppRoutes.cart:
-        return MaterialPageRoute(builder: (context) => const CartScreen());
+        return MaterialPageRoute(
+          builder:
+              (context) => BlocProvider(
+                create: (_) => sl<CartBloc>()..add(GetCartItems()),
+                child: const CartScreen(),
+              ),
+        );
       case AppRoutes.coupons:
         return MaterialPageRoute(builder: (context) => const CouponsScreen());
       case AppRoutes.recipe:
         return MaterialPageRoute(builder: (context) => const RecipeScreen());
       case AppRoutes.mealDetails:
         return MaterialPageRoute(
-          builder: (context) => MealDetailsScreen(product: settings.arguments as Product),
+          builder:
+              (context) => BlocProvider(
+                create: (context) => sl<CartBloc>(),
+                child: MealDetailsScreen(product: settings.arguments as Product),
+              ),
         );
       case AppRoutes.allOrders:
         return MaterialPageRoute(builder: (context) => AllOrdersScreen());

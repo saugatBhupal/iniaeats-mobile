@@ -7,15 +7,15 @@ part of 'otp_creation_response_dto.dart';
 // **************************************************************************
 
 OtpCreationResponseDto _$OtpCreationResponseDtoFromJson(
-  Map<String, dynamic> json,
-) => OtpCreationResponseDto(
-  message: json['message'] as String,
-  expiryTime: json['expiryTime'] as String,
-);
+        Map<String, dynamic> json) =>
+    OtpCreationResponseDto(
+      message: json['message'] as String,
+      expiryTime: json['expiryTime'] as String,
+    );
 
 Map<String, dynamic> _$OtpCreationResponseDtoToJson(
-  OtpCreationResponseDto instance,
-) => <String, dynamic>{
-  'message': instance.message,
-  'expiryTime': instance.expiryTime,
-};
+        OtpCreationResponseDto instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+      'expiryTime': instance.expiryTime,
+    };

@@ -23,7 +23,11 @@ class Appbarfunctions extends StatelessWidget {
                 onTap: () => Navigator.of(context).pushNamed(AppRoutes.notifications),
               ),
               const SizedBox(width: 10),
-              CustomIconButton(icon: AppIcons.cart, count: 10),
+              CustomIconButton(
+                icon: AppIcons.cart,
+                count: 10,
+                onTap: () => Navigator.of(context).pushNamed(AppRoutes.cart),
+              ),
             ],
           ),
         ],

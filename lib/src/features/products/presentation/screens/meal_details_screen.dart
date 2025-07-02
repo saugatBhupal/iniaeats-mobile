@@ -55,7 +55,7 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
               ),
             ],
           ),
-          AddCartSection(price: widget.product.price),
+          AddCartSection(product: widget.product),
         ],
       ),
     );

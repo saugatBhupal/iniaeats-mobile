@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:inaeats/src/config/app_routes/app_routes.dart';
 import 'package:inaeats/src/core/constants/app_assets.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
-import 'package:inaeats/src/core/constants/app_enums.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
@@ -11,7 +10,6 @@ import 'package:inaeats/src/core/widgets/buttons/icon_button.dart';
 import 'package:inaeats/src/core/widgets/symbols/food_mark_symbol.dart';
 import 'package:inaeats/src/features/products/domain/entities/product.dart';
 import 'package:inaeats/src/features/products/presentation/widgets/textspan/meal_detail_icon_row.dart';
-import 'package:inaeats/src/features/products/presentation/widgets/textspan/meal_details_icon_textspan.dart';
 
 class MealDetailsImage extends StatelessWidget {
   final Product product;
@@ -40,7 +38,10 @@ class MealDetailsImage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AppbarBackButton(),
-                Text(AppStrings.swipeDown, style: TextStyle(color: Colors.white70)),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).pushNamed(AppRoutes.recipe),
+                  child: Text(AppStrings.swipeDown, style: TextStyle(color: Colors.white70)),
+                ),
                 CustomIconButton(
                   icon: AppIcons.cart,
                   count: 10,
