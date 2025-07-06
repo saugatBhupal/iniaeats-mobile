@@ -19,13 +19,16 @@ class CartSummary extends Equatable {
   factory CartSummary.initial() {
     return CartSummary(subtotal: 0, vat: 0, deliveryFee: 120, discount: 0, totalPayable: 0);
   }
-
   factory CartSummary.fromCartItems(List<Cart> items, {Coupon? coupon}) {
     final subtotal = items.fold(0, (sum, item) => sum + item.product.price * item.quantity);
     final vat = (subtotal * 0.13).round();
     final deliveryFee = 120;
 
-    final discount = coupon?.discountAmount ?? 0;
+    int discount = 0;
+    if (coupon != null) {
+      discount = coupon.getValidDiscount(subtotal);
+    } else {}
+
     final totalPayable = subtotal + vat + deliveryFee - discount;
 
     return CartSummary(

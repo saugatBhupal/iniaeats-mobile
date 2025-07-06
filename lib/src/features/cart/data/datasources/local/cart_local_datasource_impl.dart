@@ -42,4 +42,10 @@ class CartLocalDatasourceImpl implements CartLocalDatasource {
       print('Product ID: ${item.productId}, Quantity: ${item.quantity}');
     });
   }
+
+  @override
+  void removeCartItems() async {
+    final box = await Hive.openBox<CartHiveModel>(AppBoxesName.cartBox);
+    await box.clear();
+  }
 }

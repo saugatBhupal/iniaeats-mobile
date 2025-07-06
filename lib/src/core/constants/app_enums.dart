@@ -15,3 +15,9 @@ enum DietType { vegetarian, nonvegetarian, vegan }
 enum Difficulty { easy, medium, hard }
 
 enum NotificationType { ordersuccess, ordercancelled, newcoupon, newservice }
+
+enum DiscountType { percent, amount }
+
+enum AddressType { current, home, work }
+
+enum DeliveryTiming { immediately, afternoon, evening }

@@ -51,3 +51,20 @@ String formatCustomDate(DateTime dateTime) {
 
   return "$month $day"; // e.g., 'Jan 11'
 }
+
+String formatExpiry(DateTime expiryDate) {
+  final now = DateTime.now();
+  final duration = expiryDate.difference(now);
+
+  final days = duration.inDays;
+  final hours = duration.inHours.remainder(24);
+
+  String formatted = '';
+  if (days > 0) formatted += '$days day${days > 1 ? 's' : ''}';
+  if (hours > 0) {
+    if (formatted.isNotEmpty) formatted += ' ';
+    formatted += '$hours hour${hours > 1 ? 's' : ''}';
+  }
+
+  return formatted.isEmpty ? 'Expired' : formatted;
+}

@@ -1,20 +1,25 @@
 import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inaeats/src/config/app_routes/app_routes.dart';
 import 'package:inaeats/src/core/constants/app_assets.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
+import 'package:inaeats/src/features/cart/presentation/bloc/cart_bloc.dart';
 
 class CartCoupons extends StatelessWidget {
   const CartCoupons({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final coupon = context.watch<CartBloc>().coupon;
     return GestureDetector(
-      onTap: () => Navigator.of(context).pushNamed(AppRoutes.coupons),
+      onTap:
+          () => Navigator.of(
+            context,
+          ).pushNamed(AppRoutes.coupons, arguments: context.read<CartBloc>().cartItems),
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         padding: EdgeInsets.symmetric(horizontal: 18, vertical: 10),
@@ -50,7 +55,7 @@ class CartCoupons extends StatelessWidget {
                   style: context.titleMedium.copyWith(color: AppColors.white, height: 1.4),
                 ),
                 Text(
-                  "0 ${AppStrings.couponSelected}",
+                  "${coupon != null ? 1 : 0} ${AppStrings.couponSelected}",
                   style: context.bodySmall.copyWith(
                     color: AppColors.white,
                     fontWeight: FontThickness.medium,

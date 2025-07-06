@@ -11,7 +11,7 @@ import 'package:inaeats/src/features/products/domain/entities/product.dart';
 
 class CartRemoteRepository implements CartRepository {
   final CartLocalDatasource cartLocalDatasource;
-
+  
   CartRemoteRepository({required this.cartLocalDatasource});
   @override
   Future<Either<Failure, Cart>> addToCart(Cart cart) async {

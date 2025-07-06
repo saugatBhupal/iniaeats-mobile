@@ -29,3 +29,9 @@ class UpdateCartItemQuantity extends CartEvent {
 
   const UpdateCartItemQuantity({required this.productId, required this.quantity});
 }
+
+class ApplyCoupon extends CartEvent {
+  final Coupon coupon;
+
+  const ApplyCoupon({required this.coupon});
+}

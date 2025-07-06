@@ -3,18 +3,14 @@ import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_fonts.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
+import 'package:inaeats/src/core/utils/date_time_utils.dart';
+import 'package:inaeats/src/features/cart/domain/entities/coupon.dart';
 import 'package:inaeats/src/features/coupons/presentation/widgets/button/apply_button.dart';
 
 class AvailableCouponCard extends StatelessWidget {
-  final String couponName;
-  final String expiresIn;
-  final String offer;
-  const AvailableCouponCard({
-    super.key,
-    required this.couponName,
-    required this.expiresIn,
-    required this.offer,
-  });
+  final Coupon coupon;
+  final ValueChanged<Coupon> onCouponSelected;
+  const AvailableCouponCard({super.key, required this.coupon, required this.onCouponSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +37,7 @@ class AvailableCouponCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  couponName,
-                  style: context.bodyLarge.copyWith(color: AppColors.green),
-                ),
+                Text(coupon.code, style: context.bodyLarge.copyWith(color: AppColors.green)),
                 RichText(
                   text: TextSpan(
                     children: [
@@ -56,16 +49,14 @@ class AvailableCouponCard extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                        text: expiresIn,
-                        style: context.bodyLarge.copyWith(
-                          color: AppColors.bento,
-                        ),
+                        text: formatExpiry(coupon.expiresIn),
+                        style: context.bodyLarge.copyWith(color: AppColors.bento),
                       ),
                     ],
                   ),
                 ),
                 Text(
-                  offer,
+                  coupon.offer,
                   softWrap: true,
                   overflow: TextOverflow.visible,
                   style: context.bodyLarge.copyWith(color: AppColors.frog),
@@ -73,7 +64,11 @@ class AvailableCouponCard extends StatelessWidget {
               ],
             ),
           ),
-          ApplyButton(),
+          ApplyButton(
+            onPressed: () {
+              onCouponSelected(coupon);
+            },
+          ),
         ],
       ),
     );

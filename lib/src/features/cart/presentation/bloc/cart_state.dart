@@ -50,10 +50,10 @@ class DeleteCartItemFailed extends CartState {
 }
 
 class CartItemsUpdated extends CartState {
-  final int quantity;
-  const CartItemsUpdated({required this.quantity});
+  final CartSummary summary;
+  const CartItemsUpdated({required this.summary});
   @override
-  List<Object> get props => [quantity];
+  List<Object> get props => [summary];
 }
 
 class CartOperationFailed extends CartState {

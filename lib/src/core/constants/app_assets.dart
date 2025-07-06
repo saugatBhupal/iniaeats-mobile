@@ -69,6 +69,7 @@ class AppIcons {
   static const String browse = "$_iconsPath/browse.svg";
   static const String offers = "$_iconsPath/offers.svg";
   static const String profile = "$_iconsPath/profile.svg";
+  static const String phone = "$_iconsPath/phone.svg";
 }
 
 class AppGifs {

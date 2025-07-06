@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:inaeats/src/features/cart/domain/entities/cart.dart';
 import 'package:inaeats/src/features/cart/domain/entities/cart_summary.dart';
+import 'package:inaeats/src/features/cart/domain/entities/coupon.dart';
 import 'package:inaeats/src/features/cart/domain/usecases/add_to_cart_usecase.dart';
 import 'package:inaeats/src/features/cart/domain/usecases/get_cart_items_usecase.dart';
 import 'package:inaeats/src/features/cart/domain/usecases/remove_cart_item_usecase.dart';
@@ -31,6 +33,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       if (event is UpdateCartItemQuantity) {
         await _updateCartItemQuantity(event, emit);
       }
+      if (event is ApplyCoupon) {
+        await _applyCoupon(event, emit);
+      }
     });
   }
 
@@ -59,7 +64,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         _cartItems
           ..clear()
           ..addAll(success);
-        _summary = CartSummary.fromCartItems(_cartItems);
+        _summary = CartSummary.fromCartItems(_cartItems, coupon: _appliedCoupon);
 
         emit(GetCartItemsSuccess(cartItems: success));
       });
@@ -77,7 +82,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         if (index != -1) {
           final existing = _cartItems[index];
           _cartItems.remove(existing);
-          _summary = CartSummary.fromCartItems(_cartItems);
+          _summary = CartSummary.fromCartItems(_cartItems, coupon: _appliedCoupon);
         }
 
         emit(DeleteCartItemSuccess());
@@ -96,9 +101,22 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       if (index != -1) {
         final oldItem = _cartItems[index];
         _cartItems[index] = Cart(product: oldItem.product, quantity: event.quantity);
-        _summary = CartSummary.fromCartItems(_cartItems);
+        _summary = CartSummary.fromCartItems(_cartItems, coupon: _appliedCoupon);
       }
-      emit(CartItemsUpdated(quantity: event.quantity));
+      emit(CartItemsUpdated(summary: _summary));
+    } catch (e) {
+      emit(CartOperationFailed(message: e.toString()));
+    }
+  }
+
+  Coupon? _appliedCoupon;
+  Coupon? get coupon => _appliedCoupon;
+
+  Future<void> _applyCoupon(ApplyCoupon event, Emitter<CartState> emit) async {
+    try {
+      _appliedCoupon = event.coupon;
+      _summary = CartSummary.fromCartItems(_cartItems, coupon: _appliedCoupon);
+      emit(CartItemsUpdated(summary: _summary));
     } catch (e) {
       emit(CartOperationFailed(message: e.toString()));
     }

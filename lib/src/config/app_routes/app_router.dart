@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inaeats/src/config/app_routes/app_routes.dart';
 import 'package:inaeats/src/config/app_routes/no_route_found.dart';
 import 'package:inaeats/src/config/dependency_injection/dependency_injector.dart';
+import 'package:inaeats/src/config/screen_args.dart';
 import 'package:inaeats/src/core/constants/app_enums.dart';
 import 'package:inaeats/src/features/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:inaeats/src/features/authentication/presentation/screens/authentication_screen.dart';
+import 'package:inaeats/src/features/cart/domain/entities/cart.dart';
 import 'package:inaeats/src/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:inaeats/src/features/cart/presentation/screens/cart_screen.dart';
 import 'package:inaeats/src/features/categories/presentation/screens/categories_screen.dart';
@@ -14,6 +16,8 @@ import 'package:inaeats/src/features/customer_service/presentation/screens/custo
 import 'package:inaeats/src/features/home/presentation/bloc/home_bloc.dart';
 import 'package:inaeats/src/features/home/presentation/screens/home_screen.dart';
 import 'package:inaeats/src/features/notifications/presentation/bloc/app_notification_bloc.dart';
+import 'package:inaeats/src/features/orders/domain/entities/product_order.dart';
+import 'package:inaeats/src/features/orders/presentation/bloc/order_bloc.dart';
 import 'package:inaeats/src/features/products/domain/entities/product.dart';
 import 'package:inaeats/src/features/products/presentation/screens/meal_details_screen.dart';
 import 'package:inaeats/src/features/notifications/presentation/screens/notification_screen.dart';
@@ -32,7 +36,8 @@ import 'package:inaeats/src/features/splash/presentation/screens/splash_screen.d
 class AppRouter {
   AppRouter._();
   static final _authBloc = sl<AuthenticationBloc>();
-
+  static final _cartBloc = sl<CartBloc>();
+  static final _orderBloc = sl<OrderBloc>();
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.root:
@@ -56,8 +61,13 @@ class AppRouter {
       case AppRoutes.home:
         return MaterialPageRoute(
           builder:
-              (context) =>
-                  BlocProvider(create: (context) => sl<HomeBloc>(), child: const HomeScreen()),
+              (context) => MultiBlocProvider(
+                providers: [
+                  BlocProvider(create: (context) => sl<HomeBloc>()),
+                  BlocProvider<OrderBloc>.value(value: _orderBloc),
+                ],
+                child: HomeScreen(),
+              ),
         );
       case AppRoutes.categories:
         return MaterialPageRoute(builder: (context) => CategoriesScreen());
@@ -92,13 +102,16 @@ class AppRouter {
       case AppRoutes.cart:
         return MaterialPageRoute(
           builder:
-              (context) => BlocProvider(
-                create: (_) => sl<CartBloc>()..add(GetCartItems()),
+              (context) => BlocProvider<CartBloc>.value(
+                value: _cartBloc..add(GetCartItems()),
                 child: const CartScreen(),
               ),
         );
       case AppRoutes.coupons:
-        return MaterialPageRoute(builder: (context) => const CouponsScreen());
+        return MaterialPageRoute(
+          builder:
+              (context) => BlocProvider<CartBloc>.value(value: _cartBloc, child: CouponsScreen()),
+        );
       case AppRoutes.recipe:
         return MaterialPageRoute(builder: (context) => const RecipeScreen());
       case AppRoutes.mealDetails:
@@ -110,11 +123,25 @@ class AppRouter {
               ),
         );
       case AppRoutes.allOrders:
-        return MaterialPageRoute(builder: (context) => AllOrdersScreen());
+        return MaterialPageRoute(
+          builder:
+              (context) => BlocProvider<OrderBloc>.value(
+                value: _orderBloc..add(GetAllOrders()),
+                child: AllOrdersScreen(),
+              ),
+        );
       case AppRoutes.orders:
-        return MaterialPageRoute(builder: (context) => OrderScreen());
+        return MaterialPageRoute(
+          builder:
+              (context) => BlocProvider<OrderBloc>.value(
+                value: _orderBloc,
+                child: OrderScreen(orderScreenArgs: settings.arguments as OrderScreenArgs),
+              ),
+        );
       case AppRoutes.trackOrders:
-        return MaterialPageRoute(builder: (context) => TrackOrdersScreen());
+        return MaterialPageRoute(
+          builder: (context) => TrackOrdersScreen(order: settings.arguments as ProductOrder),
+        );
       default:
         return MaterialPageRoute(builder: (context) => const NoRouteFound());
     }

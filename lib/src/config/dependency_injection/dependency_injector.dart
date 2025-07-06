@@ -8,6 +8,7 @@ import 'package:inaeats/src/features/authentication/authentication_injector.dart
 import 'package:inaeats/src/features/cart/cart_injector.dart';
 import 'package:inaeats/src/features/home/home_injector.dart';
 import 'package:inaeats/src/features/notifications/notification_injector.dart';
+import 'package:inaeats/src/features/orders/order_injector.dart';
 import 'package:inaeats/src/features/search/search_injector.dart';
 import 'package:inaeats/src/features/splash/splash_injector.dart';
 
@@ -20,6 +21,7 @@ Future<void> initDependencies() async {
   initHome();
   initSearch();
   initCart();
+  initOrders();
   initNotification();
 }
 

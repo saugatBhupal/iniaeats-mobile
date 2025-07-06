@@ -4,4 +4,5 @@ abstract class CartLocalDatasource {
   void addCartItem(CartHiveModel cartItem);
   Future<List<CartHiveModel>> getCartItems();
   void removeCartItem(CartHiveModel cartItem);
+  void removeCartItems();
 }

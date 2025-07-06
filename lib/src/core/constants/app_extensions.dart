@@ -123,3 +123,29 @@ extension DifficultyExtension on Difficulty {
     }
   }
 }
+
+extension AddressTypeExtension on AddressType {
+  String get displayName {
+    switch (this) {
+      case AddressType.current:
+        return "Current Address";
+      case AddressType.home:
+        return "Home";
+      case AddressType.work:
+        return "Work";
+    }
+  }
+}
+
+extension DeliverTimingExtension on DeliveryTiming {
+  List<String> get displayTiming {
+    switch (this) {
+      case DeliveryTiming.immediately:
+        return ["Immediately", "(45 mins - 1 hour)", "Might be delayed during peak hours."];
+      case DeliveryTiming.evening:
+        return ["Evening", " (5pm - 6pm)", "Recommended for dinner orders."];
+      case DeliveryTiming.afternoon:
+        return ["Afternoon", "(11am - 1pm)", "Recommended for lunch orders."];
+    }
+  }
+}
