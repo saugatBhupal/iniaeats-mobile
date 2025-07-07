@@ -6,7 +6,6 @@ import 'package:inaeats/src/core/widgets/appbar/TitleAppbar.dart';
 import 'package:inaeats/src/core/widgets/backgroud/gradient_background.dart';
 import 'package:inaeats/src/core/widgets/textspan/info_textspan.dart';
 import 'package:inaeats/src/core/widgets/textspan/left_title.dart';
-import 'package:inaeats/src/features/cart/domain/entities/cart.dart';
 import 'package:inaeats/src/features/cart/domain/entities/coupon.dart';
 import 'package:inaeats/src/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:inaeats/src/features/coupons/presentation/widgets/available_coupon_card.dart';

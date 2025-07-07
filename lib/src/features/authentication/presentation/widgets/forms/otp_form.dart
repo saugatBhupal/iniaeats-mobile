@@ -6,6 +6,7 @@ import 'package:inaeats/src/core/constants/app_enums.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/core/functions/build_toast.dart';
 import 'package:inaeats/src/core/widgets/input/otp_field.dart';
+import 'package:inaeats/src/core/widgets/snackbar/app_snackbar_alert.dart';
 import 'package:inaeats/src/features/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:inaeats/src/features/authentication/presentation/widgets/expiry_countdown.dart';
 import 'package:inaeats/src/features/authentication/presentation/widgets/otp_textspan.dart';
@@ -43,6 +44,7 @@ class _OtpFormState extends State<OtpForm> {
     return BlocListener<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) {
         if (state is VerifyOtpSuccess && state.dto.user.hasRegistered == true) {
+          showCustomAlertOverlay(context, type: AlertType.welcome);
           Navigator.of(context).pushNamed(AppRoutes.home);
         }
         if (state is VerifyOtpSuccess && state.dto.user.hasRegistered == false) {

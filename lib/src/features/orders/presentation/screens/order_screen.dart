@@ -3,14 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:inaeats/src/config/app_routes/app_routes.dart';
 import 'package:inaeats/src/config/screen_args.dart';
-import 'package:inaeats/src/core/constants/app_assets.dart';
 import 'package:inaeats/src/core/constants/app_enums.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
 import 'package:inaeats/src/core/functions/build_toast.dart';
 import 'package:inaeats/src/core/widgets/appbar/TitleAppbar.dart';
+import 'package:inaeats/src/core/widgets/snackbar/app_snackbar_alert.dart';
 import 'package:inaeats/src/features/orders/presentation/bloc/order_bloc.dart';
 import 'package:inaeats/src/features/orders/presentation/widgets/choose_location_map.dart';
-import 'package:inaeats/src/features/orders/presentation/widgets/order_location_map.dart';
 import 'package:inaeats/src/features/orders/presentation/widgets/scrollable_sheet/place_order_scrollable_sheet.dart';
 
 class OrderScreen extends StatefulWidget {
@@ -35,7 +34,8 @@ class _OrderScreenState extends State<OrderScreen> {
             buildToast(toastType: ToastType.error, msg: state.message);
           }
           if (state is PlaceOrderSuccess) {
-            Navigator.of(context).pushNamed(AppRoutes.trackOrders, arguments: state.order);
+            showCustomAlertOverlay(context, type: AlertType.order);
+            Navigator.of(context).pushNamed(AppRoutes.home);
           }
         },
         child: Stack(

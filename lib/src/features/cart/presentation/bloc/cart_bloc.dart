@@ -77,15 +77,18 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     emit(DeleteCartItemLoading());
     try {
       final result = await removeCartItemUsecase.call(event.cart);
+
       result.fold((failure) => emit(DeleteCartItemFailed(message: failure.message)), (success) {
         final index = _cartItems.indexWhere((c) => c.product.id == event.cart.product.id);
-        if (index != -1) {
-          final existing = _cartItems[index];
-          _cartItems.remove(existing);
-          _summary = CartSummary.fromCartItems(_cartItems, coupon: _appliedCoupon);
-        }
 
-        emit(DeleteCartItemSuccess());
+        if (index != -1) {
+          final removedCart = _cartItems.removeAt(index);
+          _summary = CartSummary.fromCartItems(_cartItems, coupon: _appliedCoupon);
+
+          emit(DeleteCartItemSuccess(cart: removedCart));
+        } else {
+          emit(DeleteCartItemFailed(message: "Item not found in cart."));
+        }
       });
     } catch (e) {
       emit(DeleteCartItemFailed(message: "Error: ${e.toString()}"));
@@ -116,7 +119,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     try {
       _appliedCoupon = event.coupon;
       _summary = CartSummary.fromCartItems(_cartItems, coupon: _appliedCoupon);
-      emit(CartItemsUpdated(summary: _summary));
+      emit(CouponAppliedSuccess(coupon: coupon, summary: _summary));
     } catch (e) {
       emit(CartOperationFailed(message: e.toString()));
     }

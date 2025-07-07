@@ -40,7 +40,10 @@ class GetCartItemsFailed extends CartState {
 class DeleteCartItemLoading extends CartState {}
 
 class DeleteCartItemSuccess extends CartState {
-  const DeleteCartItemSuccess();
+  final Cart cart;
+  const DeleteCartItemSuccess({required this.cart});
+  @override
+  List<Object> get props => [cart];
 }
 
 class DeleteCartItemFailed extends CartState {
@@ -60,4 +63,12 @@ class CartOperationFailed extends CartState {
   final String message;
 
   const CartOperationFailed({required this.message});
+}
+
+class CouponAppliedSuccess extends CartState {
+  final Coupon? coupon;
+  final CartSummary summary;
+  const CouponAppliedSuccess({required this.coupon, required this.summary});
+  @override
+  List<Object> get props => [summary];
 }

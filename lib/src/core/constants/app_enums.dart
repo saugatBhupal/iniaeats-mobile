@@ -21,3 +21,5 @@ enum DiscountType { percent, amount }
 enum AddressType { current, home, work }
 
 enum DeliveryTiming { immediately, afternoon, evening }
+
+enum AlertType { welcome, coupon, removeitem, order }

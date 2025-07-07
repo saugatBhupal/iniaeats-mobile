@@ -149,3 +149,90 @@ extension DeliverTimingExtension on DeliveryTiming {
     }
   }
 }
+
+extension ToastEnumsExtension on ToastType {
+  Color getColor() {
+    switch (this) {
+      case ToastType.error:
+        return AppColors.red;
+      case ToastType.success:
+        return AppColors.frog;
+    }
+  }
+}
+
+extension AlertTypeExtension on AlertType {
+  String getTitle({String? coupon}) {
+    switch (this) {
+      case AlertType.welcome:
+        return "Welcome!";
+      case AlertType.coupon:
+        return "${coupon ?? "Discount"} Coupon Added";
+      case AlertType.removeitem:
+        return "Item Removed From Cart";
+      case AlertType.order:
+        return "Your Order Has Been Placed!";
+    }
+  }
+
+  String getSubtitle({String? item}) {
+    switch (this) {
+      case AlertType.welcome:
+        return "You have logged in successfully.";
+      case AlertType.coupon:
+        return "Your one time coupon has been applied.";
+      case AlertType.removeitem:
+        return "${item ?? "One Item"} has been removed from the cart.";
+      case AlertType.order:
+        return "Upon receiving confirmation call you can track your order.";
+    }
+  }
+
+  String get iconPath {
+    switch (this) {
+      case AlertType.welcome:
+        return AppIcons.welcome;
+      case AlertType.coupon:
+        return AppIcons.discount;
+      case AlertType.removeitem:
+        return AppIcons.remove;
+      case AlertType.order:
+        return AppIcons.party;
+    }
+  }
+
+  Color get titleColor {
+    switch (this) {
+      case AlertType.welcome:
+      case AlertType.coupon:
+        return AppColors.green;
+      case AlertType.removeitem:
+        return AppColors.bento;
+      case AlertType.order:
+        return AppColors.salmon;
+    }
+  }
+
+  Color get subColor {
+    switch (this) {
+      case AlertType.welcome:
+      case AlertType.coupon:
+      case AlertType.order:
+        return AppColors.black.withValues(alpha: 0.45);
+      case AlertType.removeitem:
+        return AppColors.bento.withValues(alpha: 0.45);
+    }
+  }
+
+  Color get shimmerColor {
+    switch (this) {
+      case AlertType.welcome:
+      case AlertType.coupon:
+        return AppColors.shimmer.withValues(alpha: 0.45);
+      case AlertType.order:
+        return AppColors.salmon.withValues(alpha: 0.45);
+      case AlertType.removeitem:
+        return AppColors.bento.withValues(alpha: 0.45);
+    }
+  }
+}

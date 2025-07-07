@@ -60,6 +60,10 @@ class AppIcons {
   static const String send = "$_iconsPath/send.svg";
   static const String filter = "$_iconsPath/filter.svg";
   static const String coupon = "$_iconsPath/coupon.png";
+  static const String discount = "$_iconsPath/discount.png";
+  static const String party = "$_iconsPath/party.png";
+  static const String remove = "$_iconsPath/remove.png";
+  static const String welcome = "$_iconsPath/welcome.png";
   static const String info = "$_iconsPath/info.svg";
   static const String calender = "$_iconsPath/calender.svg";
   static const String location = "$_iconsPath/location.svg";

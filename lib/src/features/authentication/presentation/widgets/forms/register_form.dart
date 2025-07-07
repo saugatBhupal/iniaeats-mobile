@@ -11,6 +11,7 @@ import 'package:inaeats/src/core/widgets/input/date_field.dart';
 import 'package:inaeats/src/core/widgets/input/dropdown_input.dart';
 import 'package:inaeats/src/core/widgets/input/email_field.dart';
 import 'package:inaeats/src/core/widgets/input/input_field.dart';
+import 'package:inaeats/src/core/widgets/snackbar/app_snackbar_alert.dart';
 import 'package:inaeats/src/features/authentication/data/dto/user/register_user_request_dto.dart';
 import 'package:inaeats/src/features/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:inaeats/src/features/authentication/presentation/widgets/input_label.dart';
@@ -54,7 +55,7 @@ class _RegisterFormState extends State<RegisterForm> {
     return BlocListener<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) {
         if (state is RegisterUserSuccess) {
-          buildToast(toastType: ToastType.success, msg: "Register Added Successfully");
+          showCustomAlertOverlay(context, type: AlertType.welcome);
           Navigator.of(context).pushNamed(AppRoutes.home);
         }
         if (state is RegisterUserError) {

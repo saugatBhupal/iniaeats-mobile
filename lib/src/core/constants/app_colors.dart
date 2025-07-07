@@ -29,4 +29,5 @@ class AppColors {
   static const Color strawberry = Color(0xFFFF8086);
   static const Color darkgreen = Color(0xFF233931);
   static const Color porcelian = Color(0xFFF7FAF5);
+  static const Color shimmer = Color(0xFF44C749);
 }
