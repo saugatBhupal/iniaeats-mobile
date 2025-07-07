@@ -21,13 +21,14 @@ class ProductOrderHiveModelAdapter extends TypeAdapter<ProductOrderHiveModel> {
       totalPrice: fields[1] as int,
       address: fields[2] as String,
       timing: fields[3] as String,
+      latLng: fields[4] as LatLng?,
     );
   }
 
   @override
   void write(BinaryWriter writer, ProductOrderHiveModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.cart)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class ProductOrderHiveModelAdapter extends TypeAdapter<ProductOrderHiveModel> {
       ..writeByte(2)
       ..write(obj.address)
       ..writeByte(3)
-      ..write(obj.timing);
+      ..write(obj.timing)
+      ..writeByte(4)
+      ..write(obj.latLng);
   }
 
   @override

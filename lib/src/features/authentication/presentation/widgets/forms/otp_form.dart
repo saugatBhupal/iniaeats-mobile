@@ -4,6 +4,7 @@ import 'package:inaeats/src/config/app_routes/app_routes.dart';
 import 'package:inaeats/src/core/constants/app_colors.dart';
 import 'package:inaeats/src/core/constants/app_enums.dart';
 import 'package:inaeats/src/core/constants/media_query_values.dart';
+import 'package:inaeats/src/core/functions/build_toast.dart';
 import 'package:inaeats/src/core/widgets/input/otp_field.dart';
 import 'package:inaeats/src/features/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:inaeats/src/features/authentication/presentation/widgets/expiry_countdown.dart';
@@ -47,6 +48,9 @@ class _OtpFormState extends State<OtpForm> {
         if (state is VerifyOtpSuccess && state.dto.user.hasRegistered == false) {
           widget.onFormRequested(AuthType.register);
         }
+        if (state is GetOtpSuccess) {
+          buildToast(toastType: ToastType.success, msg: state.dto.message);
+        }
         if (state is VerifyOtpError) {
           setState(() {
             errorMessage = state.message;
@@ -57,49 +61,52 @@ class _OtpFormState extends State<OtpForm> {
           });
         }
       },
-      child: Container(
-        height: context.height / 2.5,
-        padding: EdgeInsets.symmetric(vertical: 28),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            OtpTextspan(
-              onChangeNumber: () => widget.onFormRequested(AuthType.login),
-              phone: widget.phone,
-            ),
-            Form(
-              key: _formKey,
-              child: Padding(
-                padding: EdgeInsets.only(top: 6, bottom: 12),
-                child: OtpField(
-                  controllers: controllers,
-                  phone: widget.phone,
-                  validator: (value) => errorMessage,
-                ),
+      child: SingleChildScrollView(
+        child: Container(
+          height: context.height / 2.5,
+          padding: EdgeInsets.symmetric(vertical: 28),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              OtpTextspan(
+                onChangeNumber: () => widget.onFormRequested(AuthType.login),
+                phone: widget.phone,
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () => context.read<AuthenticationBloc>().add(GetOtp(phone: widget.phone)),
-                  child: Text(
-                    "Resend OTP",
-                    style: context.bodySmall.copyWith(
-                      color: AppColors.green,
-                      decoration: TextDecoration.underline,
-                    ),
+              Form(
+                key: _formKey,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 6, bottom: 12),
+                  child: OtpField(
+                    controllers: controllers,
+                    phone: widget.phone,
+                    validator: (value) => errorMessage,
                   ),
                 ),
-                ExpiryCountdown(
-                  expiryTimeString: widget.expiryTime,
-                  onExpired: () {
-                    context.read<AuthenticationBloc>().add(GetOtp(phone: widget.phone));
-                  },
-                ),
-              ],
-            ),
-          ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap:
+                        () => context.read<AuthenticationBloc>().add(GetOtp(phone: widget.phone)),
+                    child: Text(
+                      "Resend OTP",
+                      style: context.bodySmall.copyWith(
+                        color: AppColors.green,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  ExpiryCountdown(
+                    expiryTimeString: widget.expiryTime,
+                    onExpired: () {
+                      context.read<AuthenticationBloc>().add(GetOtp(phone: widget.phone));
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -29,8 +29,11 @@ class OrderRemoteRepository implements OrderRepository {
         totalPrice: order.totalPrice,
         address: order.address,
         timing: order.timing.name,
+        latLng: order.latLng,
       );
       orderLocalRepository.addOrder(orderHiveModel);
+      final ordersHive = await orderLocalRepository.getAllOrders();
+      print("Places order ${ordersHive.length}");
       cartLocalDatasource.removeCartItems();
       return Right(order);
     } catch (e) {
@@ -45,7 +48,7 @@ class OrderRemoteRepository implements OrderRepository {
       final String jsonString = await rootBundle.loadString('assets/data/product.data');
       final List<dynamic> jsonList = jsonDecode(jsonString);
       final List<Product> allProducts = jsonList.map((e) => Product.fromJson(e)).toList();
-      print("orders");
+      print("orders ${ordersHive.length}");
       List<ProductOrder> orders =
           ordersHive.map((orderHive) {
             final List<Cart> cart =
@@ -63,6 +66,7 @@ class OrderRemoteRepository implements OrderRepository {
               totalPrice: orderHive.totalPrice,
               address: orderHive.address,
               timing: timing,
+              latLng: orderHive.latLng,
             );
           }).toList();
 

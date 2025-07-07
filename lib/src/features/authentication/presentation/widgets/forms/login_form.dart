@@ -58,64 +58,66 @@ class _LoginFormState extends State<LoginForm> {
           widget.onOtpRequested(_phoneController.text, '');
         }
       },
-      child: SizedBox(
-        height: context.height / 2.5,
-        child: Form(
-          key: _formKey,
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 28),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                InputLabel(label: "Select country and city"),
-                Padding(
-                  padding: EdgeInsets.only(top: 4, bottom: 12),
-                  child: Row(
-                    children: [
-                      Flexible(flex: 2, child: CountryDropdown()),
-                      const SizedBox(width: 10),
-                      Flexible(
-                        flex: 3,
-                        child: DropdownInput(
-                          label: selectedCity,
-                          title: "City",
-                          options: cities,
-                          onSelected: (value) {
-                            setState(() => selectedCity = value);
-                          },
+      child: SingleChildScrollView(
+        child: SizedBox(
+          height: context.height / 2.5,
+          child: Form(
+            key: _formKey,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 28),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  InputLabel(label: "Select country and city"),
+                  Padding(
+                    padding: EdgeInsets.only(top: 4, bottom: 12),
+                    child: Row(
+                      children: [
+                        Flexible(flex: 2, child: CountryDropdown()),
+                        const SizedBox(width: 10),
+                        Flexible(
+                          flex: 3,
+                          child: DropdownInput(
+                            label: selectedCity,
+                            title: "City",
+                            options: cities,
+                            onSelected: (value) {
+                              setState(() => selectedCity = value);
+                            },
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                PhoneField(
-                  controller: _phoneController,
-                  label: AppStrings.phoneLabel,
-                  validator: (val) {
-                    return FormValidator.validateTitle(val, AppStrings.phone);
-                  },
-                ),
-                SizedBox(height: 32),
-                ValueListenableBuilder<bool>(
-                  valueListenable: isPhoneFilled,
-                  builder: (context, isEnabled, _) {
-                    return AuthButton(
-                      title: AppStrings.requestOTP,
-                      onPressed:
-                          isEnabled
-                              ? () {
-                                if (_formKey.currentState!.validate()) {
-                                  // widget.onOtpRequested();
-                                  context.read<AuthenticationBloc>().add(
-                                    GetOtp(phone: _phoneController.text),
-                                  );
+                  PhoneField(
+                    controller: _phoneController,
+                    label: AppStrings.phoneLabel,
+                    validator: (val) {
+                      return FormValidator.validateTitle(val, AppStrings.phone);
+                    },
+                  ),
+                  SizedBox(height: 32),
+                  ValueListenableBuilder<bool>(
+                    valueListenable: isPhoneFilled,
+                    builder: (context, isEnabled, _) {
+                      return AuthButton(
+                        title: AppStrings.requestOTP,
+                        onPressed:
+                            isEnabled
+                                ? () {
+                                  if (_formKey.currentState!.validate()) {
+                                    // widget.onOtpRequested();
+                                    context.read<AuthenticationBloc>().add(
+                                      GetOtp(phone: _phoneController.text),
+                                    );
+                                  }
                                 }
-                              }
-                              : null,
-                    );
-                  },
-                ),
-              ],
+                                : null,
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),

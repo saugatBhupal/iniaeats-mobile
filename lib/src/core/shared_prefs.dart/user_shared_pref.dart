@@ -36,6 +36,7 @@ class UserSharedPref {
   static Future deleteUser() async {
     final _instance = await SharedPreferences.getInstance();
     await _instance.remove(_userKey);
+    await deleteUserToken();
   }
 
   Future<Either<Failure, bool>> setUserToken(String token) async {
@@ -58,9 +59,9 @@ class UserSharedPref {
     }
   }
 
-  Future<Either<Failure, bool>> deleteUserToken() async {
+  static Future<Either<Failure, bool>> deleteUserToken() async {
     try {
-      _sharedPreferences = await SharedPreferences.getInstance();
+      final _sharedPreferences = await SharedPreferences.getInstance();
       await _sharedPreferences.remove('token');
       return const Right(true);
     } catch (e) {

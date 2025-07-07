@@ -49,7 +49,6 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     return BlocListener<SplashBloc, SplashState>(
       listener: (context, state) {
         if (state is SplashGetUserSuccessfully && state.user != null) {
-          print("User Info ${state.user}");
           Navigator.of(
             context,
           ).pushNamedAndRemoveUntil(AppRoutes.home, (route) => false, arguments: state.user);

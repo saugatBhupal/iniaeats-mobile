@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inaeats/src/config/app_routes/app_routes.dart';
 import 'package:inaeats/src/config/screen_args.dart';
+import 'package:inaeats/src/core/constants/app_enums.dart';
 import 'package:inaeats/src/core/constants/app_strings.dart';
+import 'package:inaeats/src/core/functions/build_toast.dart';
 import 'package:inaeats/src/core/widgets/appbar/TitleAppbar.dart';
 import 'package:inaeats/src/core/widgets/backgroud/gradient_background.dart';
 import 'package:inaeats/src/features/cart/domain/entities/cart.dart';
@@ -57,10 +59,17 @@ class CartScreen extends StatelessWidget {
                   cartItems: cartItems,
                   totalPayable: totalPayable,
                   onPressed: () {
-                    Navigator.of(context).pushNamed(
-                      AppRoutes.orders,
-                      arguments: OrderScreenArgs(cartItems: cartItems, totalPayable: totalPayable),
-                    );
+                    if (cartItems.isNotEmpty) {
+                      Navigator.of(context).pushNamed(
+                        AppRoutes.orders,
+                        arguments: OrderScreenArgs(
+                          cartItems: cartItems,
+                          totalPayable: totalPayable,
+                        ),
+                      );
+                    } else {
+                      buildToast(toastType: ToastType.error, msg: "Add Items to Cart");
+                    }
                   },
                 ),
               ),

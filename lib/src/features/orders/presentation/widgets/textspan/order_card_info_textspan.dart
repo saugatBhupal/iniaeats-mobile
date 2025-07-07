@@ -27,12 +27,21 @@ class OrderCardInfoTextspan extends StatelessWidget {
           deliveryTiming.displayTiming[0] + deliveryTiming.displayTiming[1],
           style: context.bodySmall.copyWith(color: AppColors.white),
         ),
+        const SizedBox(height: 4),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             SvgPicture.asset(AppIcons.location),
             const SizedBox(width: 8),
-            Text(address, style: context.bodySmall.copyWith(color: AppColors.white)),
+            Expanded(
+              child: Text(
+                address,
+                maxLines: 2,
+                softWrap: true,
+                style: context.bodySmall.copyWith(color: AppColors.white),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
           ],
         ),
       ],

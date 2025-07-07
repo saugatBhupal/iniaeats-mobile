@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:inaeats/src/features/home/presentation/bloc/home_bloc.dart';
 import 'package:inaeats/src/features/home/presentation/widgets/components/home_app_bar.dart';
 import 'package:inaeats/src/features/home/presentation/widgets/components/home_body.dart';
 import 'package:inaeats/src/features/home/presentation/widgets/components/home_bottom_nav_bar.dart';
 import 'package:inaeats/src/features/offers/presentation/screens/offers_screen.dart';
 import 'package:inaeats/src/features/orders/presentation/screens/all_orders_screen.dart';
+import 'package:inaeats/src/features/orders/presentation/widgets/order_location_map.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -33,7 +35,7 @@ class HomeScreen extends StatelessWidget {
       case 1:
         return AllOrdersScreen();
       case 2:
-        return OffersScreen();
+        return OrderLocationMap(destination: LatLng(27.70507417853043, 85.30747225454336));
       case 3:
         return OffersScreen();
       case 4:

@@ -61,88 +61,90 @@ class _RegisterFormState extends State<RegisterForm> {
           buildToast(toastType: ToastType.success, msg: state.message);
         }
       },
-      child: Container(
-        height: context.height / 1.55,
-        padding: EdgeInsets.symmetric(vertical: 28),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              InputField(
-                label: AppStrings.nameLabel,
-                controller: _nameController,
-                validator: (value) => FormValidator.validateTitle(value, "Full Name"),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12.0),
-                child: EmailField(
-                  label: AppStrings.emailLabel,
-                  controller: _emailController,
-                  validator: (value) => FormValidator.validateEmail(value),
+      child: SingleChildScrollView(
+        child: Container(
+          height: context.height / 1.55,
+          padding: EdgeInsets.symmetric(vertical: 28),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                InputField(
+                  label: AppStrings.nameLabel,
+                  controller: _nameController,
+                  validator: (value) => FormValidator.validateTitle(value, "Full Name"),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 6, bottom: 12),
-                child: Row(
-                  children: [
-                    Flexible(
-                      flex: 2,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          InputLabel(label: AppStrings.gender),
-                          DropdownInput(
-                            label:
-                                '${selectedGender.name[0].toUpperCase()}${selectedGender.name.substring(1)}',
-                            title: AppStrings.gender,
-                            options: genderOptions,
-                            onSelected: (String value) {
-                              setState(() {
-                                selectedGender = Gender.values.firstWhere(
-                                  (g) =>
-                                      '${g.name[0].toUpperCase()}${g.name.substring(1)}' == value,
-                                );
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    Flexible(
-                      flex: 4,
-                      child: DateField(
-                        label: AppStrings.dob,
-                        controller: _dobController,
-                        validator: (value) => FormValidator.validateTitle(value, AppStrings.dob),
-                      ),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12.0),
+                  child: EmailField(
+                    label: AppStrings.emailLabel,
+                    controller: _emailController,
+                    validator: (value) => FormValidator.validateEmail(value),
+                  ),
                 ),
-              ),
-              SizedBox(height: 22),
-              DarkRoundedButton(
-                title: AppStrings.contin,
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    print("Phone ${widget.phone}");
-                    context.read<AuthenticationBloc>().add(
-                      RegisterUser(
-                        dto: RegisterUserRequestDto(
-                          fullname: _nameController.text,
-                          phone: widget.phone,
-                          email: _emailController.text,
-                          gender: selectedGender,
-                          dob: DateFormat("d MMMM yyyy").parse(_dobController.text),
+                Padding(
+                  padding: EdgeInsets.only(top: 6, bottom: 12),
+                  child: Row(
+                    children: [
+                      Flexible(
+                        flex: 2,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            InputLabel(label: AppStrings.gender),
+                            DropdownInput(
+                              label:
+                                  '${selectedGender.name[0].toUpperCase()}${selectedGender.name.substring(1)}',
+                              title: AppStrings.gender,
+                              options: genderOptions,
+                              onSelected: (String value) {
+                                setState(() {
+                                  selectedGender = Gender.values.firstWhere(
+                                    (g) =>
+                                        '${g.name[0].toUpperCase()}${g.name.substring(1)}' == value,
+                                  );
+                                });
+                              },
+                            ),
+                          ],
                         ),
                       ),
-                    );
-                  }
-                },
-              ),
-            ],
+                      const SizedBox(width: 20),
+                      Flexible(
+                        flex: 4,
+                        child: DateField(
+                          label: AppStrings.dob,
+                          controller: _dobController,
+                          validator: (value) => FormValidator.validateTitle(value, AppStrings.dob),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 22),
+                DarkRoundedButton(
+                  title: AppStrings.contin,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      print("Phone ${widget.phone}");
+                      context.read<AuthenticationBloc>().add(
+                        RegisterUser(
+                          dto: RegisterUserRequestDto(
+                            fullname: _nameController.text,
+                            phone: widget.phone,
+                            email: _emailController.text,
+                            gender: selectedGender,
+                            dob: DateFormat("d MMMM yyyy").parse(_dobController.text),
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

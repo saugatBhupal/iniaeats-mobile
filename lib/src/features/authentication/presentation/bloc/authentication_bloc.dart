@@ -46,7 +46,14 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     emit(const VerifyOtpLoading());
     final result = await verifyOtpUsecase(event.dto);
     result.fold(
-      (failure) => emit(VerifyOtpError(message: failure.message)),
+      (failure) => emit(
+        VerifyOtpError(
+          message:
+              failure.message.contains(":")
+                  ? failure.message.split(": ").sublist(1).join(": ").trim()
+                  : failure.message,
+        ),
+      ),
       (success) => emit(VerifyOtpSuccess(dto: success)),
     );
   }

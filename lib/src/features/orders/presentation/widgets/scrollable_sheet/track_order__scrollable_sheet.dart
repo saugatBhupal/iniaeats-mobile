@@ -15,8 +15,8 @@ class TrackOrderScrollableSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
-      initialChildSize: 0.44,
-      minChildSize: 0.44,
+      initialChildSize: 0.43,
+      minChildSize: 0.43,
       maxChildSize: 0.80,
       builder: (context, scrollController) {
         return Container(

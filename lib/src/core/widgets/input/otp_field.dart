@@ -74,19 +74,27 @@ class _OtpFieldState extends State<OtpField> {
                       fillColor: AppColors.chalk,
                       counterText: '',
                       contentPadding: const EdgeInsets.symmetric(vertical: 10),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide(
-                          color: field.hasError ? AppColors.red : AppColors.border,
-                        ),
-                      ),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide(
-                          color: field.hasError ? AppColors.red : AppColors.green,
-                        ),
+                        borderSide: const BorderSide(color: AppColors.green),
                       ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(color: AppColors.border),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(color: AppColors.red),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(color: AppColors.red),
+                      ),
+                      errorText: field.hasError ? '' : null,
+                      errorStyle: const TextStyle(height: 0, fontSize: 0),
                     ),
+
                     onChanged: (value) {
                       if (value.isNotEmpty && index < 5) {
                         FocusScope.of(context).requestFocus(focusNodes[index + 1]);
